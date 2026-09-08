@@ -1,0 +1,55 @@
+---
+title: "Routing"
+description: "Why the cheapest headline price is usually not the cheapest trade, and what oka simulates before quoting you one number."
+---
+
+A listing's price tells you almost nothing about what buying it will cost. oka's job is to compute the part that price leaves out.
+
+## The all-in number
+
+For every open listing on the stock you asked for, oka simulates the entire path from the stables you hold now to the position you would end up with:
+
+<Steps>
+  <Step title="Reach the chain">
+    Your stables may be on Solana while the cheapest listing lives on Base. Moving them costs a bridge fee and takes time, and both count against that listing.
+  </Step>
+  <Step title="Cross the pool">
+    The swap itself: mid price, spread, and the price impact your size causes. A thin book turns a good quote into a bad fill, and size is what exposes it.
+  </Step>
+  <Step title="Pay the gas">
+    Every transaction on the path burns gas, on a chain whose fees have nothing to do with the stock. Ethereum's gas can exceed a small trade's entire spread.
+  </Step>
+  <Step title="Pay the fee">
+    oka's own take, charged on the trade.
+  </Step>
+</Steps>
+
+Add them up and you get one number: what you pay, all-in, to end up holding that wrapper. oka ranks every listing by it and fills the winner.
+
+This is why a listing with the best sticker price routinely loses. A cent of spread advantage does not survive a three-dollar bridge, and depth beats headline price as soon as your order is large enough to move the pool.
+
+<Note>
+  Closed listings are skipped. Wrappers track stock-market hours, and a pool with no market maker awake is not a price, it is a hope.
+</Note>
+
+## Auto and Expert
+
+**Auto** picks the cheapest listing for you. It does not ask which issuer you would prefer, and it does not present the alternatives it rejected.
+
+**Expert** lets you choose the issuer and the chain, and shows every listing side by side with its all-in cost, its hours and its caveats. Choose it when you have a reason to hold one issuer's paper over another's.
+
+Neither mode lets you choose the execution venue. Which pool the swap crosses is an aggregator's problem, and turning it into a user-facing choice would mean asking a question with no good answer.
+
+## Failure is a state, not a surprise
+
+An order fills at the quoted all-in price or it does not happen at all. There is no partial fill on a buy.
+
+When it fails — a stale quote, a swap that reverts — the money stops as cash in your execution wallet rather than stranded mid-route. If the stables had already moved to another chain to reach a listing that then failed, oka brings them back.
+
+A retry re-runs the whole comparison from scratch. It reuses your cash first, skips the bridge if the money is already in the right place, and may well pick a different listing than the one that just failed, because in the meantime the ranking has moved.
+
+## Splitting a sale
+
+Buys take one listing. Large sells sometimes cannot: no single pool has the depth to absorb the position without a punitive price impact, so oka splits the exit across several listings.
+
+That is the one case where the result can land in between, with some legs settled and others not. The activity screen names which. Expert mode hides the listing picker for these orders, since picking one listing for an order that needs three is not a choice.

@@ -1,0 +1,70 @@
+---
+title: "FAQ"
+description: "The questions that come up before the first deposit, and after the first failed order."
+---
+
+## What you hold
+
+<AccordionGroup>
+  <Accordion title="Am I buying a real share?">
+    No. You are buying a wrapper — a token an issuer mints to track the stock's price. You get economic exposure, not legal title, not a vote, and no entry on any shareholder register.
+
+    Your claim is on the issuer that minted the token. [What you own](/concepts/what-you-own) names the five of them.
+  </Accordion>
+
+  <Accordion title="What happens to dividends and splits?">
+    They are handled by the issuer, and not all of them do it the same way — some scale the displayed balance, some apply a multiplier, some rebase the token in your wallet. The method for each issuer is listed in [chains and issuers](/reference/chains-and-issuers).
+  </Accordion>
+
+  <Accordion title="Can I trade at any hour?">
+    Only when a listing is open. Wrappers track stock-market hours, and oka skips closed listings rather than routing you into a pool with nobody awake in it. Outside market hours you may find that fewer listings — or none — are available for a given stock.
+  </Accordion>
+</AccordionGroup>
+
+## Money and keys
+
+<AccordionGroup>
+  <Accordion title="Who holds my keys?">
+    You do. Signing in creates an EVM smart account and a Solana keypair, and both can be exported from the Wallet screen. oka never reads them.
+  </Accordion>
+
+  <Accordion title="Do I need ETH or SOL to pay gas?">
+    No. oka pays the network's gas and charges you the equivalent in stables, so you never have to hold a native balance on five chains just to trade. That line is the [gas take](/reference/costs).
+  </Accordion>
+
+  <Accordion title="Which stablecoin do I send?">
+    USDC on every chain except Robinhood Chain, which has no USDC and settles in USDG, the Global Dollar. The deposit screen always names the correct token for the chain you picked — send anything else and it cannot be recovered.
+  </Accordion>
+
+  <Accordion title="Can oka move my money without asking?">
+    It can execute the steps of a trade you placed — that is what the session grant covers. It cannot withdraw. Sending money to an address outside your wallet requires your signature every time.
+  </Accordion>
+</AccordionGroup>
+
+## Orders
+
+<AccordionGroup>
+  <Accordion title="My order failed. Where is my money?">
+    In your execution wallet, as cash. A buy is all-or-nothing: if the quote goes stale or the swap fails, no wrapper is bought and nothing is left stranded mid-route. If your stables had already moved to another chain, oka brings them back.
+
+    Retrying reuses that cash, skips the bridge when the money is already in the right place, and re-runs the comparison — so it may pick a different listing than the one that just failed.
+  </Accordion>
+
+  <Accordion title="Why is my trade more expensive on Ethereum?">
+    Gas. It is charged per transaction by the chain, not by oka, and it has nothing to do with your order size — which means it falls hardest on small trades. That is also why Ethereum's minimums are higher: $10 to trade, $15 to deposit, $25 to withdraw.
+  </Accordion>
+
+  <Accordion title="Can I place a limit order?">
+    Not today. Only market orders exist.
+  </Accordion>
+
+  <Accordion title="Why did oka pick that issuer?">
+    Because that listing was cheapest all-in — spread, gas, bridge and fee together — at the moment you asked. The headline price is only one term in that sum, so the winner is often not the one with the best sticker price.
+
+    If you want to choose the issuer and chain yourself, use [Expert mode](/concepts/routing).
+  </Accordion>
+
+  <Accordion title="Why can't I choose the exchange it trades on?">
+    Because it is not a decision with a good answer. Which pool the swap crosses is a routing problem, solved by an aggregator against live liquidity. Neither Auto nor Expert exposes it.
+  </Accordion>
+</AccordionGroup>

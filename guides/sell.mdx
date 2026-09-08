@@ -1,0 +1,30 @@
+---
+title: "Sell a position"
+description: "The same machinery, inverted: back to stables on the chain where the wrapper already sits."
+---
+
+Selling is a buy run backwards. oka sells your wrapper on an open listing on the chain where it already sits, and the stables land in your execution wallet as **cash**.
+
+There is no bridge on the way out unless you ask for one later, when you withdraw. The position is where it is; selling it does not move it first.
+
+## All-or-nothing, again
+
+A sale fills at the quoted price or it does not happen. If it fails, you still hold the wrapper and nothing has changed except the time on the clock.
+
+When a position is large enough that no single listing can absorb it, oka splits the sale across several. That is the one case where the outcome can land in between: some legs settle and others do not, and the screen tells you which. Expert mode hides the listing picker for those orders, because picking one listing for an order that needs three is not a choice, it is a mistake waiting to happen.
+
+## Selling part of a position
+
+You can sell any amount, but watch the tail. A sale that would leave you holding less than the chain's minimum trade size warns you before you confirm — a position too small to sell is a position you cannot exit without paying more in gas than it is worth.
+
+| Chain | Minimum trade |
+|---|---|
+| Solana, Base, Arbitrum One, Robinhood | $1 |
+| BSC | $2 |
+| Ethereum | $10 |
+
+## What happens to the proceeds
+
+They stay as cash in your execution wallet. Cash is spent before any new deposit, so the money from a sale is what funds your next order.
+
+To take it off oka entirely, [withdraw](/guides/withdraw) it — a separate action, signed by you.

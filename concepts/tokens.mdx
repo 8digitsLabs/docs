@@ -1,0 +1,30 @@
+---
+title: "OKA and IOKA"
+description: "An index token backed by a basket, and a protocol token with a fixed supply."
+---
+
+Two tokens with two different jobs. Neither is a tokenized stock, and neither is something you need to understand to buy one.
+
+## IOKA, the index
+
+IOKA is a single token that stands for a share of a basket of tokenized stocks. The basket is held in a vault; one IOKA is a proportional claim on everything inside it.
+
+Its value follows the basket rather than any one stock. When the holdings are worth more, each token is worth more, because there are only ever as many tokens as the vault has been asked to issue. That ratio — what the vault holds, divided by the tokens in circulation — is the token's net asset value, and it is the number everything else is measured against.
+
+Redeeming does not pay you out in dollars. It returns your proportional slice of the tokens themselves, which is the honest form of the claim: you owned a piece of a basket, and you get that piece.
+
+## Keeping the market price tethered
+
+An index token is only as good as its price. Nothing stops a pool from trading a token above or below what backs it, and most index tokens live with that gap.
+
+IOKA trades against a stablecoin in a pool oka runs itself, through a Uniswap v4 hook. Instead of leaving the price to whoever happens to show up, the hook places its own liquidity in a band around a centre anchored to the vault's net asset value — bidding below it, offering above it — and re-centres that band as the value of the basket moves.
+
+The important part is what it does when it cannot keep up. If the pool's price drifts too far from what the basket is actually worth, the hook stops trading rather than let the market print a number the vault does not support. A refusal is a worse user experience than a fill and a better one than a bad fill.
+
+## OKA, the protocol token
+
+OKA is the protocol's own token. Its supply is fixed: it is minted once, at deployment, and there is no mint path afterwards. No inflation, no later issuance, nothing to dilute.
+
+<Note>
+  Neither token is deployed to a live network today. The contracts are written and tested, including against a fork of mainnet, but nothing is running yet — and any figure you may see attached to them in the app is placeholder data, not a live number.
+</Note>

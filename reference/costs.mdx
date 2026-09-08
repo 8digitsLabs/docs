@@ -1,0 +1,42 @@
+---
+title: "What it costs"
+description: "Every line you pay on a trade, who receives it, and which ones oka can do anything about."
+---
+
+Four things can appear between your stables and your position. The order ticket names each one before you confirm, so the all-in figure is never a number you have to take on faith.
+
+## The spread
+
+The difference between the pool's mid price and what you actually get, price impact included. It goes to the market, not to oka, and it is the largest cost on most trades.
+
+It is also the one routing exists to attack: comparing listings is mostly comparing spreads and depth. A pool that is thin for your size costs more than one whose headline price looks worse.
+
+## The gas take
+
+Chains charge gas in their own token — ETH, SOL, BNB — and you hold stables. oka pays the gas and charges you the equivalent in stables, so you never have to keep a native balance on five chains just to be able to trade.
+
+It is an estimate made before the fact, with a margin, because gas moves between the moment you are quoted and the moment the transaction lands. There is a floor of **$0.01** per trade so the amount is never dust; on Solana, where fees are both tiny and predictable, it is a flat **$0.005**.
+
+The gas take scales with the chain, not with your order. This is what makes small trades on Ethereum unattractive and why its minimums are higher than everywhere else.
+
+## The bridge fee
+
+Charged only when a route has to move your stables to another chain to reach the listing it picked. It goes to the bridge.
+
+Cash already sitting on the right chain skips this entirely, which is why a retry after a failed fill is often cheaper than the attempt before it.
+
+## oka's fee
+
+The take, charged on a buy and on a sale. It is shown as its own line on the ticket and included in the all-in number you are quoted.
+
+## What is free
+
+Depositing. Withdrawing — you pay the network's gas and nothing to oka. Holding a position. Having an account.
+
+<Note>
+  Minimum trade sizes exist because of gas, not margin: **$1** on Solana, Base, Arbitrum and Robinhood, **$2** on BSC, **$10** on Ethereum. Below them, network fees would be a meaningful share of what you are buying.
+</Note>
+
+<Card title="Withdrawal fees by chain" icon="arrow-up-from-bracket" href="/guides/withdraw">
+  Indicative network costs, from a cent on Solana to a few dollars on Ethereum.
+</Card>

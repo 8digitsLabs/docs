@@ -1,53 +1,61 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "oka",
+  "description": "Buy tokenized stocks with stablecoins, at the cheapest all-in price across issuers and chains.",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#e8564f",
+    "light": "#ff8d80",
+    "dark": "#e8564f"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
   "navigation": {
-    "pages": [
+    "groups": [
       {
-        "group": "Getting Started",
+        "group": "Get started",
         "pages": [
           "index",
           "quickstart"
         ]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          "guides/deposit",
+          "guides/buy",
+          "guides/sell",
+          "guides/withdraw"
+        ]
+      },
+      {
+        "group": "How it works",
+        "pages": [
+          "concepts/what-you-own",
+          "concepts/routing",
+          "concepts/wallets-and-keys",
+          "concepts/tokens"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
+          "reference/costs",
+          "reference/chains-and-issuers",
+          "reference/glossary",
+          "reference/faq"
+        ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/oka.png",
+    "dark": "/logo/oka.png"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "label": "Open the app",
+      "href": "https://app.oka.finance"
     }
   },
   "contextual": {
@@ -56,17 +64,28 @@
       "view",
       "chatgpt",
       "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+      "mcp"
     ]
   },
   "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+    "links": [
+      {
+        "header": "Product",
+        "items": [
+          {
+            "label": "oka.finance",
+            "href": "https://oka.finance"
+          },
+          {
+            "label": "Terms",
+            "href": "https://oka.finance/terms"
+          },
+          {
+            "label": "Privacy",
+            "href": "https://oka.finance/privacy"
+          }
+        ]
+      }
+    ]
   }
 }

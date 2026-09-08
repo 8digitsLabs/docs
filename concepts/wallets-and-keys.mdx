@@ -1,0 +1,38 @@
+---
+title: "Wallets and keys"
+description: "What gets created when you sign in, what oka can do without asking, and what it can never do."
+---
+
+Signing in with an email address creates a wallet. That sentence hides a fair amount, so here is the whole of it.
+
+## The execution wallet
+
+At sign-in oka creates two things and calls them one: an **EVM smart account**, which covers Ethereum, Base, Arbitrum, BSC and Robinhood Chain, and a **Solana keypair**. Together they are your execution wallet — where your cash sits, where your wrappers land, and what every order spends from.
+
+You never pick between them. The app shows one balance and reaches for whichever half a given trade needs.
+
+Sign-in is email, Google, X, or a passkey. There is no extension to install and no seed phrase to copy down before you can do anything.
+
+## Whose keys these are
+
+Yours. Both halves can be **exported** — from the Wallet screen, or from the account menu — and taking them out gives you the wallet itself, wrappers included, in any client you like.
+
+oka never reads them. Export runs inside the key provider's own interface; the app hands off and gets nothing back.
+
+## The session grant
+
+Approving every step of a route would make the product unusable: a buy can involve a bridge, an approval and a swap, and prompting four times for one order is not security, it is attrition.
+
+So oka asks once, for a **session grant** scoped to the actions that make up trading — moving your stables to the chain a route needs, filling an order, exiting a position.
+
+What it deliberately does not cover: **withdrawals**. The one action that sends money to an address outside your wallet asks you to sign, every single time. A grant that could move money away from you would be a grant worth stealing.
+
+## Wallets you already have
+
+You can connect an external wallet — the one you already use — to fund your account. It transfers stables into your execution wallet, same chain, signed by you.
+
+That connection is for deposits. It does not become your login, and oka does not trade out of it.
+
+<Card title="Withdrawing" icon="arrow-up-from-bracket" href="/guides/withdraw">
+  Minimums, network fees, and why this is the action that always prompts.
+</Card>

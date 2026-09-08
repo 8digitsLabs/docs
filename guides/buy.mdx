@@ -1,0 +1,45 @@
+---
+title: "Buy a stock"
+description: "Type an amount in dollars, confirm a quote, get a position — and what oka does in between."
+---
+
+Pick a stock, type what you want to spend, confirm. The amount is in dollars, not in shares, because the wrapper you end up holding may not be one-for-one with a share and the dollar figure is the one you actually decided on.
+
+## Auto mode
+
+The default. oka compares every open listing for that stock and takes the cheapest one all-in — the whole path, not the sticker price:
+
+- moving your stables to the chain where the listing lives
+- the swap itself, spread and price impact included
+- the gas those transactions burn
+- oka's fee
+
+Closed and illiquid listings are skipped. You do not choose the issuer, the chain, or the venue, and Auto does not explain the alternatives it rejected.
+
+## Expert mode
+
+Expert lets you pick the **issuer and the chain**, and nothing else. The comparison table shows each listing's all-in cost, its trading hours, and the caveats attached to that particular wrapper.
+
+The execution venue stays out of your hands in both modes — which pool the swap crosses is an aggregator's job, and making it a user choice would be offering a decision with no good answer.
+
+<Note>
+  Only market orders exist today. Limit and TWAP orders are not available.
+</Note>
+
+## The quote is the price
+
+An order fills at the quoted all-in price or it does not happen. There is no partial fill.
+
+If the quote goes stale between your confirmation and the chain, or the swap fails outright, nothing is bought: no wrapper, and your stables stay in your execution wallet as cash. A retry then starts fresh and reuses that cash — no second transfer, and no second bridge if the money is already on the right chain. If a different listing has become cheaper in the meantime, the retry takes that one instead.
+
+<Warning>
+  Minimum trade sizes are set per chain: **$1** on Solana, Base, Arbitrum and Robinhood, **$2** on BSC, **$10** on Ethereum. Below them, gas would be a meaningful share of the trade.
+</Warning>
+
+## What you see before confirming
+
+The order ticket breaks the cost into its parts — the route, the bridge fee if one is needed, the gas take, and oka's fee — so the all-in number is never a single figure you have to trust. Every line is named in [what it costs](/reference/costs).
+
+<Card title="How routing decides" icon="route" href="/concepts/routing">
+  The waterfall Auto simulates per listing, and why the cheapest headline price usually is not the cheapest trade.
+</Card>

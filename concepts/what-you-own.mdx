@@ -1,0 +1,52 @@
+---
+title: "What you own"
+description: "Underlying, wrapper, listing — three words that make everything else on oka readable."
+---
+
+The same stock can be a dozen different tokens. Keeping three words apart is what lets you reason about which one you are buying.
+
+## Underlying
+
+The real security: **AAPL**, the share Apple issues. It trades on a stock exchange, during that exchange's hours, and it is what everyone means when they say "Apple stock". You never touch it on oka.
+
+## Wrapper
+
+A token an issuer mints to track an underlying. **AAPLx** by xStocks tracks AAPL. It is a claim on the issuer, not on Apple.
+
+Five issuers mint wrappers today, and they are separate businesses with separate terms, incorporated in different places:
+
+| Issuer | Legal entity | Jurisdiction | Corporate actions |
+|---|---|---|---|
+| xStocks | Backed Assets (JE) Limited | Jersey | Scaled UI |
+| Ondo Stocks | Ondo Global Markets (BVI) Limited | British Virgin Islands | Scaled UI |
+| Coinbase | Coinbase Onchain SPV Ltd | ADGM | Multiplier |
+| Robinhood | Robinhood Assets (Jersey) Limited | Jersey | — |
+| Backpack | Backpack Securities Global Limited | New Zealand | Rebase |
+
+Two wrappers on the same underlying are not interchangeable. They have different issuers, different terms, different liquidity — and they trade at different prices.
+
+## Listing
+
+One wrapper deployed on one chain. **AAPLx on Solana** is a listing; the same wrapper on another chain is a different listing, with its own pool, its own depth and its own price.
+
+This is the unit oka actually trades. When Auto mode picks "the cheapest", it is picking a listing.
+
+<Note>
+  Underlying → wrapper → listing is a widening, not a hierarchy of quality. One underlying has several wrappers; one wrapper has several listings. Today's catalog covers 18 underlyings across 41 wrappers.
+</Note>
+
+## Exposure
+
+What you hold once the trade settles: a wrapper balance whose dollar value follows the underlying's price.
+
+It is not a share. No legal title, no vote, no entry on Apple's register. Your claim is on the issuer, and if that issuer stops honouring its token, the price of the underlying stops being the thing that matters.
+
+## Cash
+
+Stables sitting in your execution wallet, unspent. Deposits land here, sale proceeds come back here, and a failed order leaves your money here rather than half-converted somewhere.
+
+Cash is always spent before oka moves anything new in, which is why a retry after a failed fill costs less than the first attempt.
+
+<Card title="How oka picks a listing" icon="route" href="/concepts/routing">
+  The all-in comparison, and why the best headline price often loses.
+</Card>

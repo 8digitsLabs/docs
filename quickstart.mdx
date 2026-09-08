@@ -1,47 +1,59 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Buy your first stock"
+description: "Sign in, deposit stables, place an order. Three steps, and what each of them is really doing."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
-
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
-
-## Prerequisites
-
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+Three steps stand between a new account and a position. None of them asks you to install anything.
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
+  <Step title="Sign in">
+    Email, Google, X or a passkey. A wallet is created for you in the same moment — one EVM smart account and one Solana keypair — so there is no extension to install and no seed phrase to write down.
 
-    ```bash
-    npm install your-package
-    ```
+    The keys are yours. You can export both from the Wallet screen whenever you want, and oka never reads them.
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
 
-    ```bash
-    your-cli init
-    ```
+  <Step title="Deposit stables">
+    Send USDC to your deposit address, or connect a wallet you already use and transfer from it in one click.
+
+    Solana is the default because it is the cheapest way in: **$1** minimum, and network fees around a cent. Ethereum works too, but its minimum is **$15** — not a rule oka invented, just what makes sense when a transfer costs a few dollars in gas.
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
 
-    ```bash
-    your-cli start
-    ```
+  <Step title="Buy">
+    Pick a stock, type an amount in dollars, confirm. oka compares every open listing for that stock, all-in, and fills the cheapest.
+
+    The quote you confirm is the price you get. If it cannot be met, nothing is bought and your stables stay where they are.
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
+## What "all-in" means
 
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+The number oka minimizes is not the token price. It is everything you pay between the stables you hold now and the position you end up with: moving your money to the chain where the listing lives, the swap itself, the gas that the transactions burn, and oka's fee.
+
+A listing with a better headline price and a thin book routinely loses to one that looks worse and costs less to reach. That comparison is the product.
+
+<Card title="How routing decides" icon="route" href="/concepts/routing">
+  The waterfall, Auto against Expert, and what happens to a route that fails halfway.
+</Card>
+
+## All-or-nothing
+
+An order fills at the quoted all-in price or it does not happen. There is no partial fill that leaves you with a third of a position and no explanation.
+
+If the quote goes stale or the swap fails, no wrapper is bought and your money stays in your execution wallet as **cash**, ready for the next attempt. A retry starts from scratch and reuses that cash first — no second transfer, and no second bridge if the stables are already on the right chain.
+
+<Warning>
+  Minimum trade sizes are per chain: **$1** on Solana, Base, Arbitrum and Robinhood, **$2** on BSC, **$10** on Ethereum. They exist so that gas never eats a meaningful share of what you are buying.
+</Warning>
+
+## After the fill
+
+Your position shows up on the portfolio screen, inside the single dollar figure at the top. Selling is the same machinery inverted, and withdrawing is a plain transfer you sign yourself.
+
+<Columns cols={2}>
+  <Card title="Sell a position" icon="arrow-right-arrow-left" href="/guides/sell">
+    Back to stables, on the chain where the wrapper sits.
+  </Card>
+  <Card title="Withdraw" icon="arrow-up-from-bracket" href="/guides/withdraw">
+    Send stables out to any address you control.
+  </Card>
+</Columns>

@@ -1,0 +1,43 @@
+---
+title: "Deposit"
+description: "Two ways to get stables into your execution wallet, and the one mistake that cannot be undone."
+---
+
+Everything on oka is bought with stablecoins held in your **execution wallet** — the wallet created for you at sign-in. Getting them there takes one of two forms.
+
+## From a wallet you already use
+
+Connect it once, pick an amount, sign. oka reads the balances it can spend and moves them same-chain into your execution wallet. This is the shortest path if you already hold stables somewhere, and the transfer is signed by you, not by oka.
+
+## From an address
+
+Open the deposit screen, choose a chain, and send to the address shown. A QR code is there for phones.
+
+<Warning>
+  Send only the token named on that screen, on the chain named on that screen. Stables sent on the wrong network, or a token that is not the one listed, cannot be recovered — not by oka and not by anyone.
+</Warning>
+
+## Which chain to use
+
+Solana is the default because it is the cheapest way in. Ethereum works, but its minimum is higher for a reason that has nothing to do with oka: a transfer there can cost several dollars in gas, and depositing $5 to pay $3 of network fees is not a deposit worth making.
+
+| Chain | Token accepted | Minimum |
+|---|---|---|
+| Solana | USDC | $1 |
+| Base | USDC | $1 |
+| Arbitrum One | USDC | $1 |
+| BSC | USDC (Binance-Peg) | $1 |
+| Robinhood | USDG | $1 |
+| Ethereum | USDC | $15 |
+
+Robinhood Chain is the one exception to "send USDC": it has no USDC, and settles in **USDG**, the Global Dollar. The deposit screen names it for you.
+
+## After it lands
+
+oka notices the deposit on its own — there is nothing to click. If the stables arrived somewhere other than where your next order needs them, the move happens as part of that order, not as a separate step you have to think about.
+
+Deposited stables sit as **cash** until you buy something. Cash is reused before any new transfer, so money that came back from a failed order or a sale is spent first.
+
+<Card title="Now buy something" icon="cart-shopping" href="/guides/buy">
+  How an order is priced, and what Auto mode is actually comparing.
+</Card>

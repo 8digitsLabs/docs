@@ -1,0 +1,49 @@
+---
+title: "Chains and issuers"
+description: "The six chains oka executes on, the five issuers it buys from, and the numbers attached to each."
+---
+
+## Chains
+
+| Chain | Settles in | Minimum trade | Minimum deposit | Minimum withdrawal |
+|---|---|---|---|---|
+| Solana | USDC | $1 | $1 | $2 |
+| Base | USDC | $1 | $1 | $2 |
+| Arbitrum One | USDC | $1 | $1 | $2 |
+| BSC | USDC (Binance-Peg) | $2 | $1 | $2 |
+| Robinhood | USDG | $1 | $1 | $2 |
+| Ethereum | USDC | $10 | $15 | $25 |
+
+Solana is the default for deposits and withdrawals: it is the cheapest way in and out, at roughly a cent a transfer.
+
+Ethereum's numbers are higher across the board for one reason, gas. A $5 deposit that costs $3 to send is not a deposit worth making, and a $5 trade whose gas exceeds its spread is not a trade worth placing.
+
+<Note>
+  **Robinhood Chain has no USDC.** It settles in USDG, the Global Dollar. The deposit screen names the right token for whichever chain you pick — send anything else and it cannot be recovered.
+</Note>
+
+## Issuers
+
+| Issuer | Legal entity | Jurisdiction | Corporate actions |
+|---|---|---|---|
+| xStocks | Backed Assets (JE) Limited | Jersey | Scaled UI |
+| Ondo Stocks | Ondo Global Markets (BVI) Limited | British Virgin Islands | Scaled UI |
+| Coinbase Tokenized Stocks | Coinbase Onchain SPV Ltd | ADGM | Multiplier |
+| Robinhood Stock Tokens | Robinhood Assets (Jersey) Limited | Jersey | — |
+| Backpack Tokenized Securities | Backpack Securities Global Limited | New Zealand | Rebase |
+
+Each issuer mints its own wrappers under its own terms. Two wrappers on the same stock are different instruments with different counterparties, which is why Expert mode lets you choose between them.
+
+### How corporate actions are handled
+
+A split or a dividend has to reach the token somehow, and the issuers do not agree on how.
+
+- **Scaled UI** — the balance is scaled for display; the raw token amount does not change.
+- **Multiplier** — a factor applied on top of the balance.
+- **Rebase** — the token balance itself changes in your wallet.
+
+The mechanism belongs to the issuer, not to oka. It is worth knowing which one you are holding before a split lands.
+
+## Coverage
+
+18 underlyings, 41 wrappers, six chains. The catalog is what oka can execute against today, not a promise about tomorrow — listings open and close, and a wrapper whose pool has gone quiet stops being offered.

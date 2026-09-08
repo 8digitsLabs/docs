@@ -1,0 +1,66 @@
+---
+title: "Glossary"
+description: "The words oka uses, and what each one means precisely."
+---
+
+<AccordionGroup>
+  <Accordion title="Underlying">
+    The real security — AAPL, the share Apple issues. It trades on a stock exchange during that exchange's hours. You never hold it on oka.
+  </Accordion>
+
+  <Accordion title="Wrapper">
+    A token an issuer mints to track an underlying. AAPLx by xStocks tracks AAPL. Your claim is on the issuer, not on Apple. Two wrappers on the same stock are different instruments.
+  </Accordion>
+
+  <Accordion title="Listing">
+    One wrapper deployed on one chain — AAPLx on Solana. Each listing has its own pool, depth and price. This is the unit oka actually trades, and what Auto mode ranks.
+  </Accordion>
+
+  <Accordion title="Exposure">
+    What you hold after a trade settles: a wrapper balance whose value follows the underlying's price. Not legal title, no vote, no entry on any shareholder register.
+  </Accordion>
+
+  <Accordion title="Cash">
+    Stables in your execution wallet, unspent. Deposits land here, sale proceeds return here, and a failed order leaves your money here. Always spent before oka moves anything new in.
+  </Accordion>
+
+  <Accordion title="Execution wallet">
+    The wallet created at sign-in: an EVM smart account plus a Solana keypair, presented as one. Where cash sits and wrappers land. Both halves can be exported.
+  </Accordion>
+
+  <Accordion title="Session grant">
+    The one-time approval that lets oka execute the steps of a trade — moving stables to the chain a route needs, filling, exiting — without prompting at each one. It does not cover withdrawals.
+  </Accordion>
+
+  <Accordion title="All-in price">
+    Everything you pay between the stables you hold and the position you end up with: spread and price impact, gas, bridge fee if the route needs one, and oka's take. The number Auto mode minimizes.
+  </Accordion>
+
+  <Accordion title="Fill">
+    A buy. Stables in, wrapper out. All-or-nothing: it settles at the quoted all-in price or it does not happen.
+  </Accordion>
+
+  <Accordion title="Exit">
+    A sale. Wrapper out, stables back as cash, on the chain where the wrapper already sat. Large exits can be split across several listings.
+  </Accordion>
+
+  <Accordion title="Take">
+    oka's own fee, charged on a fill and on an exit. Shown as its own line on the ticket and included in the all-in price.
+  </Accordion>
+
+  <Accordion title="Gas take">
+    What oka charges in stables to cover the native-token gas it paid on your behalf. Floored at $0.01, flat $0.005 on Solana. Scales with the chain, not with your order size.
+  </Accordion>
+
+  <Accordion title="Auto mode">
+    The default. oka compares every open listing all-in and fills the cheapest. You do not pick the issuer or the chain.
+  </Accordion>
+
+  <Accordion title="Expert mode">
+    You choose the issuer and the chain from a table of every listing and its all-in cost. The execution venue stays out of your hands in both modes.
+  </Accordion>
+
+  <Accordion title="Settlement token">
+    The stablecoin a chain settles in. USDC everywhere, except Robinhood Chain, which uses USDG — the Global Dollar.
+  </Accordion>
+</AccordionGroup>
