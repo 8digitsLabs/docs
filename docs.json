@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "oka",
+  "name": "oka finance",
   "description": "Buy tokenized stocks with stablecoins, at the cheapest all-in price across issuers and chains.",
   "colors": {
     "primary": "#e8564f",
