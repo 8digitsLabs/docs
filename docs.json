@@ -48,8 +48,8 @@
     ]
   },
   "logo": {
-    "light": "/logo/oka.png",
-    "dark": "/logo/oka.png"
+    "light": "/logo/oka-light.svg",
+    "dark": "/logo/oka-dark.svg"
   },
   "navbar": {
     "primary": {
