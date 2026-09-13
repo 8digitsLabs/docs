@@ -15,7 +15,7 @@ Each is priced at your size, and the proceeds are **bridged home to Base**, wher
 
 A buy takes one listing. A large sell sometimes cannot: no single pool has the depth to absorb the position without a punitive price impact.
 
-When that happens oka splits the exit across several listings. It prefers the fewest legs that cover the amount, and among equivalent options it empties your smallest lots first — leaving you with fewer, larger positions rather than a long tail of dust.
+When that happens oka splits the exit across several listings. It prefers the fewest legs that cover the amount, and among equivalent options it empties your smallest lots first, leaving you with fewer, larger positions rather than a long tail of dust.
 
 The legs execute independently. This is the one case where the result can land in between: some legs settled, others not. The status says `completed_partial` and the activity screen names which. Expert mode hides the listing picker for these orders, because picking one listing for an order that needs three is not a choice.
 
@@ -27,7 +27,7 @@ The legs execute independently. This is the one case where the result can land i
 
 There is no minimum sell size. The only bound is gas: if the cost of executing on a chain would swallow the proceeds, that listing is excluded and the ticket says so by name rather than blaming the market.
 
-Everything else is the buy path in reverse — one action at a time, a 90-second quote, and 100 basis points of tolerance between what you confirmed and what lands.
+Everything else is the buy path in reverse, one action at a time, a 90-second quote, and 100 basis points of tolerance between what you confirmed and what lands.
 
 ## After it settles
 

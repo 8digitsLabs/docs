@@ -27,7 +27,7 @@ Add them up and you get the all-in figure the ticket shows. This is why a listin
 
 ## Who actually quotes
 
-oka does not run its own pools for tokenized stocks. It asks the venues that do — **CoW Protocol** and **Mobula** on EVM chains, **Jupiter** on Solana, **LiFi** where it reaches further — and bridges through **Relay**.
+oka does not run its own pools for tokenized stocks. It asks the venues that do: **CoW Protocol** and **Mobula** on EVM chains, **Jupiter** on Solana, **LiFi** where it reaches further. Bridging goes through **Relay**.
 
 Several venues may quote the same listing. oka keeps the best answer per listing and compares listings, not routes: which pool the swap crosses is the aggregator's problem, and turning it into a user-facing choice would mean asking a question with no good answer.
 
@@ -39,7 +39,7 @@ Several venues may quote the same listing. oka keeps the best answer per listing
 
 **Quotes that are too good.** A fill fourteen times better than the market is a bug, not a deal. Implausible answers are dropped rather than routed to.
 
-**Listings too small to be worth it.** Each chain has a minimum trade size, applied per listing. A $3 order does not get refused — it stops considering Ethereum and BSC, and fills from what is left.
+**Listings too small to be worth it.** Each chain has a minimum trade size, applied per listing. A $3 order does not get refused: it stops considering Ethereum and BSC, and fills from what is left.
 
 **Listings whose venue says the market is closed.** Wrappers track stock-market hours, and a venue that will not quote outside them takes its listing out of the running.
 
@@ -51,13 +51,13 @@ Several venues may quote the same listing. oka keeps the best answer per listing
 
 **Expert** shows every listing side by side with its all-in cost and lets you choose the issuer and the chain. Choose it when you have a reason to hold one issuer's paper over another's.
 
-An Expert pick is honoured only if it can execute. On a sell that needs several listings, the picker is hidden — choosing one listing for an order that needs three is not a choice.
+An Expert pick is honoured only if it can execute. On a sell that needs several listings, the picker is hidden. Choosing one listing for an order that needs three is not a choice.
 
 ## Failure is a state, not a surprise
 
 A buy fills or it does not happen. There is no partial fill.
 
-The quote is good for **90 seconds** and can be spent once; confirming a stale one is refused rather than executed at a number you never saw. The fill is honoured within **100 basis points** of the quoted output — the band that stops a trade reverting on a one-tick drift.
+The quote is good for **90 seconds** and can be spent once; confirming a stale one is refused rather than executed at a number you never saw. The fill is honoured within **100 basis points** of the quoted output, the band that stops a trade reverting on a one-tick drift.
 
 When it fails, the money stops as cash on Base rather than stranded mid-route. If the stables had already bridged to reach a listing that then failed, they are brought home. A retry re-runs the whole comparison and may pick a different listing, because the ranking has moved.
 
@@ -67,6 +67,6 @@ When it fails, the money stops as cash on Base rather than stranded mid-route. I
 
 ## Splitting a sale
 
-Buys take one listing. Large sells sometimes cannot, so oka splits the exit across several — fewest legs that cover the amount, emptying your smallest lots first.
+Buys take one listing. Large sells sometimes cannot, so oka splits the exit across several: fewest legs that cover the amount, emptying your smallest lots first.
 
 Those legs execute independently, which is the one case where a result lands in between: `completed_partial`, with the activity screen naming which legs settled.

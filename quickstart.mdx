@@ -7,7 +7,7 @@ Three steps stand between a new account and a position. None of them asks you to
 
 <Steps>
   <Step title="Sign in">
-    Email, Google, X or a passkey. Two wallets are created for you in the same moment — one EVM, one Solana — so there is no extension to install and no seed phrase to write down.
+    Email, Google, X or a passkey. Two wallets are created for you in the same moment, one EVM, one Solana, so there is no extension to install and no seed phrase to write down.
 
     The keys are yours. Export either one from the account menu whenever you want.
   </Step>
@@ -25,7 +25,7 @@ Three steps stand between a new account and a position. None of them asks you to
 
 ## Everything lands on Base
 
-Whatever chain you deposit from, your money is swept into USDC on Base and that is where your balance lives. The sweep costs **$1**, flat — it is the bridge, not a margin. Deposit on Base and there is nothing to bridge, so it is free.
+Whatever chain you deposit from, your money is swept into USDC on Base and that is where your balance lives. The sweep costs **$1**, flat: it is the bridge, not a margin. Deposit on Base and there is nothing to bridge, so it is free.
 
 This is the decision the rest of the product rests on. One settlement chain means one balance instead of six, gas measured in cents, and a router that never has to guess where your money is sleeping.
 
@@ -47,12 +47,12 @@ A listing with a better headline price and a thin book routinely loses to one th
 
 A buy fills or it does not happen. There is no partial fill that leaves you with a third of a position and no explanation.
 
-The quote you confirm is honoured **within 100 basis points** — the pool moves between confirming and landing, and that band is what stops a trade reverting on a one-tick drift. Past it the trade fails, nothing is spent, and your money stays as cash ready for the next attempt.
+The quote you confirm is honoured **within 100 basis points**: the pool moves between confirming and landing, and that band is what stops a trade reverting on a one-tick drift. Past it the trade fails, nothing is spent, and your money stays as cash ready for the next attempt.
 
 A retry starts the comparison from scratch and spends that cash first. It may well pick a different listing than the one that just failed, because the ranking has moved in the meantime.
 
 <Warning>
-  Minimum trade sizes are per chain: **$1** on Solana, Base, Arbitrum and Robinhood Chain, **$2** on BSC, **$10** on Ethereum. They apply per listing — a trade too small for Ethereum stops considering Ethereum listings rather than being refused outright.
+  Minimum trade sizes are per chain: **$1** on Solana, Base, Arbitrum and Robinhood Chain, **$2** on BSC, **$10** on Ethereum. They apply per listing: a trade too small for Ethereum stops considering Ethereum listings rather than being refused outright.
 </Warning>
 
 ## After the fill

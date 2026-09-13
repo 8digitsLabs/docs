@@ -6,14 +6,14 @@ description: "An index fund you can hold as one token, a governance token that s
 Two tokens with two different jobs. Neither is a tokenized stock, and neither is something you need to understand to buy one.
 
 <Note>
-  **Not live yet.** The contracts are written, tested, and rehearsed against a fork of mainnet — and deployed once, anonymously, to prove the whole sequence works for real money. Nothing is running in production. Figures attached to these tokens in the app today are placeholder data.
+  **Not live yet.** The contracts are written, tested, and rehearsed against a fork of mainnet, and deployed once, anonymously, to prove the whole sequence works for real money. Nothing is running in production. Figures attached to these tokens in the app today are placeholder data.
 </Note>
 
 ## IOKA, the index fund
 
-IOKA is one token that stands for a basket of tokenized stocks — five of them at launch, held in a vault. One IOKA is a proportional claim on everything inside.
+IOKA is one token that stands for a basket of tokenized stocks, five of them at launch, held in a vault. One IOKA is a proportional claim on everything inside.
 
-Buying the basket yourself means five trades, five spreads and five lots of gas, then the same again every time the weights drift. IOKA is one trade. Its value follows the basket rather than any single name, because there are only ever as many tokens as the vault has been asked to issue. That ratio — what the vault holds, divided by tokens in circulation — is the net asset value, and everything else is measured against it.
+Buying the basket yourself means five trades, five spreads and five lots of gas, then the same again every time the weights drift. IOKA is one trade. Its value follows the basket rather than any single name, because there are only ever as many tokens as the vault has been asked to issue. That ratio of what the vault holds to tokens in circulation is the net asset value, and everything else is measured against it.
 
 Redemption returns a proportional slice of the underlying tokens, not dollars: you owned a piece of a basket, and you get that piece. It is closed by default; the ordinary way in and out is the market below.
 
@@ -21,7 +21,7 @@ Redemption returns a proportional slice of the underlying tokens, not dollars: y
 
 OKA decides what IOKA holds. Which five stocks, at which weights, and when the basket is rebalanced are decisions OKA holders vote on.
 
-Its supply is fixed — minted once at deployment, with no mint path afterwards. No inflation, no later issuance, nothing to dilute.
+Its supply is fixed, minted once at deployment, with no mint path afterwards. No inflation, no later issuance, nothing to dilute.
 
 <Note>
   Voting is the model, not yet the mechanism. The vault's basket functions are owner-controlled in the deployed contracts; the governance layer that hands those rights to OKA holders is still to be built.
@@ -31,23 +31,23 @@ Its supply is fixed — minted once at deployment, with no mint path afterwards.
 
 An index token is only as good as its price. Nothing stops a pool from trading one above or below what backs it, and most index tokens live with that gap.
 
-IOKA trades against a stablecoin in a pool oka runs itself, through a Uniswap v4 hook. Rather than leaving the price to whoever turns up, the hook is the market maker: it places its own liquidity in a band around a centre anchored to the vault's net asset value — bidding below, offering above — and re-lays that band as the basket moves.
+IOKA trades against a stablecoin in a pool oka runs itself, through a Uniswap v4 hook. Rather than leaving the price to whoever turns up, the hook is the market maker: it places its own liquidity in a band around a centre anchored to the vault's net asset value, bidding below, offering above, and re-lays that band as the basket moves.
 
 Two consequences matter.
 
 **It refuses rather than misprice.** If the pool's price drifts too far from what the basket is actually worth, the hook stops trading. A refusal is a worse experience than a fill and a better one than a bad fill.
 
-**It rebuilds instead of running dry.** When one side of the band is bought out, the hook goes to the vault and rebuilds it — buying the five underlying stocks and minting against them, or selling them and burning. The market maker's inventory is the fund itself.
+**It rebuilds instead of running dry.** When one side of the band is bought out, the hook goes to the vault and rebuilds it, buying the five underlying stocks and minting against them, or selling them and burning. The market maker's inventory is the fund itself.
 
 ## Where the fees go
 
-Every fill against that band pays the pool fee plus the band's half-spread — about **2%** one way. Re-centring the band as the basket moves earns more: the hook is arbitraging its own quote back to fair value, and that spread is captured rather than handed to outside arbitrageurs.
+Every fill against that band pays the pool fee plus the band's half-spread, about **2%** one way. Re-centring the band as the basket moves earns more: the hook is arbitraging its own quote back to fair value, and that spread is captured rather than handed to outside arbitrageurs.
 
 <Note>
-  The capture is on-chain and measured. The split below is treasury policy, not something the contracts enforce today — the hook pays its earnings to a single treasury address, and the allocation happens from there.
+  The capture is on-chain and measured. The split below is treasury policy, not something the contracts enforce today. The hook pays its earnings to a single treasury address, and the allocation happens from there.
 </Note>
 
-Half of what is earned goes **back into the fund**. The vault holds more stock against the same number of tokens, so every holder's claim grows — you accumulate shares by holding, without buying any.
+Half of what is earned goes **back into the fund**. The vault holds more stock against the same number of tokens, so every holder's claim grows. You accumulate shares by holding, without buying any.
 
 The other half **buys OKA** on the market. Platform fees do the same. The token that governs the fund is bought with the money the fund and the platform make.
 

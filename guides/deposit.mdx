@@ -9,7 +9,7 @@ You need stables before you can buy anything. There are two ways in, and both en
 
 **From a wallet you already use.** Connect it, pick the chain, type an amount, sign one transfer. oka sees it arrive and takes it from there.
 
-**To your deposit address.** Every chain has one. Copy it, send from anywhere — an exchange, a friend, another wallet — and it is picked up on the next check.
+**To your deposit address.** Every chain has one. Copy it, send from anywhere: an exchange, a friend, another wallet, and it is picked up on the next check.
 
 <Warning>
   **Send the right token on the right chain.** Each chain settles in one stablecoin, and the deposit screen names it before it shows you an address. USDC on five chains, **USDG on Robinhood Chain**, which has no USDC at all. Anything else sent to that address cannot be recovered by oka or by anyone.
@@ -23,7 +23,7 @@ These are detection thresholds, not preferences: a deposit under the line is not
 
 ## What happens next
 
-Everything is consolidated into **USDC on Base**, which is where your balance lives. The sweep is its own step — it runs as soon as the deposit is detected, not when you next place an order.
+Everything is consolidated into **USDC on Base**, which is where your balance lives. The sweep is its own step: it runs as soon as the deposit is detected, not when you next place an order.
 
 It costs **$1**, flat, taken out of what arrives. That is the bridge's price. Deposit on Base and there is nothing to bridge, so there is no fee.
 
@@ -35,7 +35,7 @@ While the sweep runs, your account is busy: a trade cannot start until the bridg
 
 ## When it does not arrive
 
-A deposit that fails to bridge is not lost — the stables are still on the chain you sent them to, in a wallet you control. oka retries on its own, and the dialog says so rather than pretending nothing happened.
+A deposit that fails to bridge is not lost: the stables are still on the chain you sent them to, in a wallet you control. oka retries on its own, and the dialog says so rather than pretending nothing happened.
 
 The detection check runs when you open the portfolio and while the deposit dialog is open. If you sent money and nothing appears, open the dialog: that is what makes oka look.
 

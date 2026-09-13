@@ -9,7 +9,7 @@ oka collapses that into one number.
 
 ## The sweep
 
-Deposit on any supported chain and your stables are bridged into **USDC on Base**, automatically, as their own step — before and independent of any order you place. It costs **$1**, flat. Deposit on Base and there is nothing to bridge, so it is free.
+Deposit on any supported chain and your stables are bridged into **USDC on Base**, automatically, as their own step, before and independent of any order you place. It costs **$1**, flat. Deposit on Base and there is nothing to bridge, so it is free.
 
 The dollar is the bridge's price, not a margin. What it buys is everything downstream.
 
@@ -19,20 +19,20 @@ The dollar is the bridge's price, not a margin. What it buys is everything downs
 
 **Cheap execution.** Base gas is cents. Every order starts there, so the fixed cost of touching a chain is the smallest it can be.
 
-**A router with one job.** Quotes are all priced the same way — USDC on Base, to the listing, wherever it lives. The comparison between listings is a comparison of routes from a known starting point, not a puzzle about where your money currently sits.
+**A router with one job.** Quotes are all priced the same way, USDC on Base, to the listing, wherever it lives. The comparison between listings is a comparison of routes from a known starting point, not a puzzle about where your money currently sits.
 
 **Fewer failure modes.** A route that fails mid-flight comes home to Base. There is one place for money to be when something goes wrong, and one place to retry from.
 
 ## What it costs
 
-**A dollar per deposit**, which matters most on small ones. A $10 deposit pays 10%; a $500 deposit pays 0.2%. Depositing more, less often, is strictly cheaper — and depositing on Base costs nothing at all.
+**A dollar per deposit**, which matters most on small ones. A $10 deposit pays 10%; a $500 deposit pays 0.2%. Depositing more, less often, is strictly cheaper, and depositing on Base costs nothing at all.
 
 **A bridge on the way out.** Selling a wrapper that lives on Solana brings the proceeds home to Base, and withdrawing to Solana bridges them back out. A round trip that starts and ends elsewhere crosses the bridge twice.
 
 **A dependency.** Base being unavailable is oka being unavailable. That is the trade for everything above, and it is worth naming rather than burying.
 
 <Note>
-  Deposits are detected on a check that runs when you open the portfolio and while the deposit dialog is open. A deposit below the chain's minimum is not picked up at all — it sits where you sent it until you top it up past the line.
+  Deposits are detected on a check that runs when you open the portfolio and while the deposit dialog is open. A deposit below the chain's minimum is not picked up at all: it sits where you sent it until you top it up past the line.
 </Note>
 
 <Card title="What it costs to trade" icon="receipt" href="/reference/costs">
