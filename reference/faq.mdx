@@ -58,6 +58,10 @@ description: "The questions that come up before the first deposit, and after the
     Gas. It is charged per transaction by the chain, not by oka, and it has nothing to do with your order size, which means it falls hardest on small trades. That is also why Ethereum's minimums are higher: \$10 to trade against \$5 elsewhere, \$20 to deposit, \$25 to withdraw.
   </Accordion>
 
+  <Accordion title="Why can't I trade right now?">
+    One action runs at a time. A trade cannot start while a deposit is still bridging to Base, and a second trade cannot start while the first is in flight. Both take seconds, and the screen says which one is holding things up.
+  </Accordion>
+
   <Accordion title="Can I place a limit order?">
     Not today, only market orders. Limit and TWAP orders are built and waiting to be switched on.
   </Accordion>

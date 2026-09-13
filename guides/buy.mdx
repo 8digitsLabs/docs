@@ -27,11 +27,9 @@ Neither mode lets you choose the execution venue. Which pool the swap crosses is
 
 ## Confirming
 
-A quote is good for **90 seconds** and can be spent once. Past that the ticket re-prices; confirm an expired one and the trade is refused rather than executed at a number you never saw.
+Confirm and the order goes out. Prices move while it lands, so the fill is honoured within a small band of what you were quoted; past that it fails instead of filling at a number you never saw.
 
-The fill is guaranteed against the quoted output **minus 100 basis points**. Pools move between confirming and landing, and that band is what stops a trade reverting on a one-tick drift.
-
-Only one action runs at a time. A trade cannot start while a deposit is bridging, and a second trade cannot start while the first is in flight.
+A failed order costs you nothing. Nothing is bought, and your money stays as cash on Base.
 
 ## What you end up with
 
