@@ -1,43 +1,44 @@
 ---
 title: "Deposit"
-description: "Two ways to get stables into your execution wallet, and the one mistake that cannot be undone."
+description: "Two ways to get stables in, where they end up, and the one mistake that cannot be undone."
 ---
 
-Everything on oka is bought with stablecoins held in your **execution wallet** — the wallet created for you at sign-in. Getting them there takes one of two forms.
+You need stables before you can buy anything. There are two ways in, and both end in the same place.
 
-## From a wallet you already use
+## Two routes in
 
-Connect it once, pick an amount, sign. oka reads the balances it can spend and moves them same-chain into your execution wallet. This is the shortest path if you already hold stables somewhere, and the transfer is signed by you, not by oka.
+**From a wallet you already use.** Connect it, pick the chain, type an amount, sign one transfer. oka sees it arrive and takes it from there.
 
-## From an address
-
-Open the deposit screen, choose a chain, and send to the address shown. A QR code is there for phones.
+**To your deposit address.** Every chain has one. Copy it, send from anywhere — an exchange, a friend, another wallet — and it is picked up on the next check.
 
 <Warning>
-  Send only the token named on that screen, on the chain named on that screen. Stables sent on the wrong network, or a token that is not the one listed, cannot be recovered — not by oka and not by anyone.
+  **Send the right token on the right chain.** Each chain settles in one stablecoin, and the deposit screen names it before it shows you an address. USDC on five chains, **USDG on Robinhood Chain**, which has no USDC at all. Anything else sent to that address cannot be recovered by oka or by anyone.
 </Warning>
 
-## Which chain to use
+## Minimums
 
-Solana is the default because it is the cheapest way in. Ethereum works, but its minimum is higher for a reason that has nothing to do with oka: a transfer there can cost several dollars in gas, and depositing $5 to pay $3 of network fees is not a deposit worth making.
+**$10** on Solana, Base, Arbitrum and BSC. **$20** on Ethereum and Robinhood Chain.
 
-| Chain | Token accepted | Minimum |
-|---|---|---|
-| Solana | USDC | $1 |
-| Base | USDC | $1 |
-| Arbitrum One | USDC | $1 |
-| BSC | USDC (Binance-Peg) | $1 |
-| Robinhood | USDG | $1 |
-| Ethereum | USDC | $15 |
+These are detection thresholds, not preferences: a deposit under the line is not picked up at all. It sits where you sent it until you top it up past the minimum, at which point the whole balance is swept.
 
-Robinhood Chain is the one exception to "send USDC": it has no USDC, and settles in **USDG**, the Global Dollar. The deposit screen names it for you.
+## What happens next
 
-## After it lands
+Everything is consolidated into **USDC on Base**, which is where your balance lives. The sweep is its own step — it runs as soon as the deposit is detected, not when you next place an order.
 
-oka notices the deposit on its own — there is nothing to click. If the stables arrived somewhere other than where your next order needs them, the move happens as part of that order, not as a separate step you have to think about.
+It costs **$1**, flat, taken out of what arrives. That is the bridge's price. Deposit on Base and there is nothing to bridge, so there is no fee.
 
-Deposited stables sit as **cash** until you buy something. Cash is reused before any new transfer, so money that came back from a failed order or a sale is spent first.
+<Note>
+  Above **$10,000** a deposit can carry up to an extra **0.1%**, disclosed on the screen before you send.
+</Note>
 
-<Card title="Now buy something" icon="cart-shopping" href="/guides/buy">
-  How an order is priced, and what Auto mode is actually comparing.
+While the sweep runs, your account is busy: a trade cannot start until the bridge lands. It takes seconds, and the dialog tracks it.
+
+## When it does not arrive
+
+A deposit that fails to bridge is not lost — the stables are still on the chain you sent them to, in a wallet you control. oka retries on its own, and the dialog says so rather than pretending nothing happened.
+
+The detection check runs when you open the portfolio and while the deposit dialog is open. If you sent money and nothing appears, open the dialog: that is what makes oka look.
+
+<Card title="Why everything lands on Base" icon="layer-group" href="/concepts/settlement">
+  What a single settlement chain buys you, and what it costs.
 </Card>

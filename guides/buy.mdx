@@ -1,45 +1,48 @@
 ---
-title: "Buy a stock"
-description: "Type an amount in dollars, confirm a quote, get a position — and what oka does in between."
+title: "Buy"
+description: "What happens between typing an amount and holding a position."
 ---
 
-Pick a stock, type what you want to spend, confirm. The amount is in dollars, not in shares, because the wrapper you end up holding may not be one-for-one with a share and the dollar figure is the one you actually decided on.
+Pick a stock, type an amount in dollars, confirm. What sits between those is a comparison.
 
-## Auto mode
+## The comparison
 
-The default. oka compares every open listing for that stock and takes the cheapest one all-in — the whole path, not the sticker price:
+oka prices the stock on **every listing that carries it** — each issuer, on each chain — and ranks them by what you actually end up holding for your money.
 
-- moving your stables to the chain where the listing lives
-- the swap itself, spread and price impact included
-- the gas those transactions burn
-- oka's fee
+That number is not the sticker price. It is the sticker price after the bridge from Base to the listing's chain, after the spread you cross in its pool, and after the gas the transactions burn. A listing with the best headline routinely loses on the total.
 
-Closed and illiquid listings are skipped. You do not choose the issuer, the chain, or the venue, and Auto does not explain the alternatives it rejected.
+Several venues may quote the same listing; oka keeps the best of them and compares listings, not routes. Quotes that come back implausibly good are dropped rather than routed to — a fill fourteen times better than the market is a bug, not a deal.
 
-## Expert mode
+## Auto and Expert
 
-Expert lets you pick the **issuer and the chain**, and nothing else. The comparison table shows each listing's all-in cost, its trading hours, and the caveats attached to that particular wrapper.
+**Auto** picks for you, on cost, and does not show the alternatives it rejected.
 
-The execution venue stays out of your hands in both modes — which pool the swap crosses is an aggregator's job, and making it a user choice would be offering a decision with no good answer.
+**Expert** shows every listing side by side with its all-in cost and lets you choose the issuer and chain. Use it when you have a reason to hold one issuer's paper over another's — they are different instruments with different counterparties.
+
+Neither mode lets you choose the execution venue. Which pool the swap crosses is the aggregator's problem, and turning it into a question would be asking you something with no good answer.
 
 <Note>
-  Only market orders exist today. Limit and TWAP orders are not available.
+  An Expert pick is honoured only if it can actually execute. A listing with no live quote is not selectable, and the ticket says so rather than routing you somewhere else silently.
 </Note>
 
-## The quote is the price
+## Confirming
 
-An order fills at the quoted all-in price or it does not happen. There is no partial fill.
+A quote is good for **90 seconds** and can be spent once. Past that the ticket re-prices; confirm an expired one and the trade is refused rather than executed at a number you never saw.
 
-If the quote goes stale between your confirmation and the chain, or the swap fails outright, nothing is bought: no wrapper, and your stables stay in your execution wallet as cash. A retry then starts fresh and reuses that cash — no second transfer, and no second bridge if the money is already on the right chain. If a different listing has become cheaper in the meantime, the retry takes that one instead.
+The fill is guaranteed against the quoted output **minus 100 basis points**. Pools move between confirming and landing, and that band is what stops a trade reverting on a one-tick drift.
+
+Only one action runs at a time. A trade cannot start while a deposit is bridging, and a second trade cannot start while the first is in flight.
+
+## What you end up with
+
+The wrapper lands in your execution wallet on the listing's chain, and the position appears on the portfolio screen inside the single dollar figure at the top.
+
+A buy is all-or-nothing. If the quote goes stale, the swap reverts, or the route fails, nothing is bought and your money stays as cash on Base, ready for the next attempt. If the stables had already bridged to reach a listing that then failed, they are brought home.
 
 <Warning>
-  Minimum trade sizes are set per chain: **$1** on Solana, Base, Arbitrum and Robinhood, **$2** on BSC, **$10** on Ethereum. Below them, gas would be a meaningful share of the trade.
+  In rare cases a fill lands but the trip home does not. oka calls that out explicitly in your activity rather than quietly reporting success — the wrapper is yours, on that chain, and support can finish the move.
 </Warning>
 
-## What you see before confirming
-
-The order ticket breaks the cost into its parts — the route, the bridge fee if one is needed, the gas take, and oka's fee — so the all-in number is never a single figure you have to trust. Every line is named in [what it costs](/reference/costs).
-
-<Card title="How routing decides" icon="route" href="/concepts/routing">
-  The waterfall Auto simulates per listing, and why the cheapest headline price usually is not the cheapest trade.
+<Card title="How the ranking works" icon="route" href="/concepts/routing">
+  The whole waterfall, and why closed listings drop out.
 </Card>

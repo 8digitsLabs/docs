@@ -1,37 +1,38 @@
 ---
 title: "Withdraw"
-description: "Send stables out to any address you control. You sign it, and oka takes nothing."
+description: "Sending your cash out, to any address you control, on any supported chain."
 ---
 
-Withdrawing sends stables from your execution wallet to an address you name. oka charges nothing for it — you pay the network's gas, and that is the whole cost.
+Withdrawing takes cash out of oka and puts it somewhere only you control. It is the one action where you sign, every time.
 
 ## How it works
 
-Choose a chain, an amount and a destination, then sign. The transfer is signed by **you**, every time. The session grant that lets oka execute your orders without a prompt does not extend to withdrawals, deliberately: the one action that can move money away from you is the one action that always asks.
+Pick a destination chain, type an amount, paste an address, confirm.
 
-Check the destination address and the chain before signing. A transfer to a wrong address is final.
+Your cash lives as USDC on Base. Withdraw to Base and it is a plain transfer. Withdraw anywhere else and it is bridged out, which the quote prices before you sign.
 
-## Minimums and fees
+<Warning>
+  **An onchain send cannot be reversed.** Check the address. oka warns you if you paste one of your own oka wallets, but it cannot know whether an address you own on the other side is the one you meant.
+</Warning>
 
-| Chain | Minimum | Network fee, roughly |
-|---|---|---|
-| Solana | $2 | $0.01 |
-| Base | $2 | $0.02 |
-| Robinhood | $2 | $0.02 |
-| Arbitrum One | $2 | $0.04 |
-| BSC | $2 | $0.08 |
-| Ethereum | $25 | $3.40 |
+## You sign it
 
-Network fees are indicative and move with the chain. Ethereum's minimum is higher because its gas is; the rest are there so a withdrawal is never mostly fee.
+Deposits, trades and bridges run without asking you: a session key signs them, which is what makes the app feel like an app. Withdrawals do not use it. Moving money out of oka asks for your wallet, every time, and the request expires if it goes unanswered.
 
-<Note>
-  Withdrawals send the chain's settlement stable — USDC everywhere, USDG on Robinhood Chain. To take money off a chain you are not on, sell or move first, then withdraw.
-</Note>
+That is the line. Everything that keeps money inside the system is automatic; the one action that takes money out is yours alone to authorise.
 
-## If you would rather leave with the keys
+## Minimums and cost
 
-You can. Both halves of your execution wallet — the EVM smart account and the Solana keypair — can be exported from the Wallet screen, and oka never reads them. Exporting is not the same as withdrawing: it hands you control of the wallet itself, wrappers included.
+**$2** on Solana, Base, Arbitrum, BSC and Robinhood Chain. **$25** on Ethereum, where gas makes anything smaller pointless.
+
+oka charges nothing to withdraw. You pay the network, and the bridge when the destination is not Base. The figures shown are indicative — a cent on Solana, a couple on Base, a few dollars on Ethereum.
+
+## Getting wrappers out
+
+Withdrawals move cash, not positions. To take value out of a stock you hold, sell it first — the proceeds land as cash on Base, and that is what you withdraw.
+
+Your keys are the other exit. Both wallets are exportable from the account menu, and an exported key reaches everything in them directly, oka included or not.
 
 <Card title="Wallets and keys" icon="key" href="/concepts/wallets-and-keys">
-  What was created at sign-in, what the session grant can and cannot do, and how export works.
+  What signs what, and what leaving with your keys actually means.
 </Card>

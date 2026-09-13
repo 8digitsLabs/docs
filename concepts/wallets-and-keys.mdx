@@ -7,25 +7,35 @@ Signing in with an email address creates a wallet. That sentence hides a fair am
 
 ## The execution wallet
 
-At sign-in oka creates two things and calls them one: an **EVM smart account**, which covers Ethereum, Base, Arbitrum, BSC and Robinhood Chain, and a **Solana keypair**. Together they are your execution wallet — where your cash sits, where your wrappers land, and what every order spends from.
+At sign-in oka creates two wallets and treats them as one: an **EVM wallet**, which covers Ethereum, Base, Arbitrum, BSC and Robinhood Chain, and a **Solana wallet**. Together they are your execution wallet — where your cash sits, where your wrappers land, and what every order spends from.
 
 You never pick between them. The app shows one balance and reaches for whichever half a given trade needs.
 
 Sign-in is email, Google, X, or a passkey. There is no extension to install and no seed phrase to copy down before you can do anything.
 
+<Note>
+  A passkey is added to an account that already exists, from the account menu. It is a way to sign in faster next time, not a way to create the account in the first place.
+</Note>
+
 ## Whose keys these are
 
-Yours. Both halves can be **exported** — from the Wallet screen, or from the account menu — and taking them out gives you the wallet itself, wrappers included, in any client you like.
+Yours. Both wallets can be **exported** from the account menu — EVM and Solana separately — and taking a key out gives you that wallet itself, wrappers included, in any client you like.
 
 oka never reads them. Export runs inside the key provider's own interface; the app hands off and gets nothing back.
 
-## The session grant
+This is the answer to "what if oka disappears". Your positions are tokens in a wallet whose key you can hold. Nothing about recovering them requires us to still be here.
+
+## The session key
 
 Approving every step of a route would make the product unusable: a buy can involve a bridge, an approval and a swap, and prompting four times for one order is not security, it is attrition.
 
-So oka asks once, for a **session grant** scoped to the actions that make up trading — moving your stables to the chain a route needs, filling an order, exiting a position.
+So oka holds a **session key** on your wallets, scoped to the actions that make up trading — sweeping a deposit to Base, filling an order, exiting a position, bringing a failed route home.
 
-What it deliberately does not cover: **withdrawals**. The one action that sends money to an address outside your wallet asks you to sign, every single time. A grant that could move money away from you would be a grant worth stealing.
+<Warning>
+  It is attached automatically when you sign in, without a prompt, and there is no button to revoke it. Signing out does not remove it, and neither does exporting your keys. Moving funds to a wallet oka does not hold is the way to end it.
+</Warning>
+
+What it deliberately does not cover: **withdrawals**. The one action that sends money to an address outside your wallet asks you to sign, every single time, and the request expires unanswered. A key that could move money away from you would be a key worth stealing.
 
 ## Wallets you already have
 

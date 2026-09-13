@@ -21,39 +21,39 @@ description: "The words oka uses, and what each one means precisely."
   </Accordion>
 
   <Accordion title="Cash">
-    Stables in your execution wallet, unspent. Deposits land here, sale proceeds return here, and a failed order leaves your money here. Always spent before oka moves anything new in.
+    USDC on Base, unspent. Deposits are swept here whichever chain they arrived from, sale proceeds come home here, and a failed order leaves your money here. Always spent before oka moves anything new in.
   </Accordion>
 
   <Accordion title="Execution wallet">
-    The wallet created at sign-in: an EVM smart account plus a Solana keypair, presented as one. Where cash sits and wrappers land. Both halves can be exported.
+    The two wallets created at sign-in — one EVM, one Solana — presented as one. Where cash sits and wrappers land. Either can be exported from the account menu.
   </Accordion>
 
-  <Accordion title="Session grant">
-    The one-time approval that lets oka execute the steps of a trade — moving stables to the chain a route needs, filling, exiting — without prompting at each one. It does not cover withdrawals.
+  <Accordion title="Session key">
+    What lets oka execute the steps of a trade — sweeping a deposit to Base, filling, exiting, bringing a failed route home — without prompting at each one. Attached automatically at sign-in, with no prompt and no revoke button. It does not cover withdrawals.
   </Accordion>
 
   <Accordion title="All-in price">
-    Everything you pay between the stables you hold and the position you end up with: spread and price impact, gas, bridge fee if the route needs one, and oka's take. The number Auto mode minimizes.
+    Everything you pay between the cash you hold and the position you end up with: spread and price impact, the bridge when the route needs one, and the gas take. There is no oka fee in it today.
   </Accordion>
 
   <Accordion title="Fill">
-    A buy. Stables in, wrapper out. All-or-nothing: it settles at the quoted all-in price or it does not happen.
+    A buy. Cash in, wrapper out. All-or-nothing: it settles within 100 basis points of the quoted output or it does not happen.
   </Accordion>
 
   <Accordion title="Exit">
-    A sale. Wrapper out, stables back as cash, on the chain where the wrapper already sat. Large exits can be split across several listings.
+    A sale. Wrapper out, proceeds bridged home to Base as cash. Large exits can be split across several listings, and those legs settle independently.
   </Accordion>
 
-  <Accordion title="Take">
-    oka's own fee, charged on a fill and on an exit. Shown as its own line on the ticket and included in the all-in price.
+  <Accordion title="Platform fee">
+    Planned, not charged. A 0.25% fee on a trade, of which 40% goes to whoever referred you. Nothing of the kind appears on a ticket today.
   </Accordion>
 
   <Accordion title="Gas take">
-    What oka charges in stables to cover the native-token gas it paid on your behalf. Floored at $0.01, flat $0.005 on Solana. Scales with the chain, not with your order size.
+    What oka charges in stables to cover the native-token gas it paid on your behalf. Estimated with a 20% buffer, floored at $0.01, flat $0.005 on Solana, and zero on a venue whose solver pays the gas. Scales with the chain, not with your order size.
   </Accordion>
 
   <Accordion title="Auto mode">
-    The default. oka compares every open listing all-in and fills the cheapest. You do not pick the issuer or the chain.
+    The default. oka compares every listing that can fill and takes the one leaving you the most stock. You do not pick the issuer or the chain.
   </Accordion>
 
   <Accordion title="Expert mode">

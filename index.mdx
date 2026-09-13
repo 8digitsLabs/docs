@@ -1,45 +1,59 @@
 ---
 title: "Introduction"
-description: "Buy exposure to a listed stock with stablecoins, at the cheapest all-in price across issuers and chains."
+description: "Buy tokenized stocks with stablecoins, at the cheapest all-in price across every issuer and chain that lists them."
 ---
 
-oka lets you buy tokenized stocks with stablecoins. You sign in with an email address or a social account, deposit stables from any wallet, and place an order. oka prices the same stock across every issuer and every chain that lists it, and fills the cheapest one — all-in, fees included.
+The same stock can be a dozen different tokens. xStocks mints one on Solana, Ondo another on Ethereum, Coinbase and Robinhood mint their own on their own chains. They trade in separate pools, so at any moment they trade at different prices, with different depth and different spreads.
 
-The screen you land on shows one number: what you hold, in dollars. Not a list of chains, not a wallet per network. Those exist underneath, and you can open them, but they are not the point.
+Buying the wrong one costs you real money before the stock has moved at all.
+
+oka prices every one of them and fills the cheapest — not the cheapest sticker, the cheapest **all-in**: the bridge to reach it, the spread you cross, the gas it burns. That comparison is the product.
+
+## What you get
+
+**Over 700 stocks and ETFs**, across **five issuers** and **six chains** — close to three thousand listings, priced against each other every time you place an order.
+
+**No platform fee.** You pay the market's spread, the chain's gas and the bridge when a route needs one. Nothing else, today.
+
+**No seed phrase, no extension.** Sign in with an email address, Google, X or a passkey. Wallets are created for you in the same moment, and the keys are exportable whenever you want.
+
+**One balance.** Deposits from any supported chain are swept into USDC on Base, so there is one number to reason about instead of six. The screen you land on shows what you hold, in dollars.
+
+<Columns cols={2}>
+  <Card title="Buy your first stock" icon="rocket" href="/quickstart">
+    Sign in, deposit, buy. Three steps.
+  </Card>
+  <Card title="What it costs" icon="receipt" href="/reference/costs">
+    Every line you pay, and which of them reach us.
+  </Card>
+</Columns>
 
 ## What you are actually buying
 
-Not a share. When you buy AAPL on oka, you receive a **wrapper**: a token an issuer mints to track Apple's price. Several issuers do this, on different chains, at slightly different prices — which is the problem oka exists to solve.
+Not a share. When you buy AAPL on oka, you receive a **wrapper**: a token an issuer mints to track Apple's price. You get economic exposure to the price. You do not get legal title, a vote, or an entry on any shareholder register.
 
-You get economic exposure to the price. You do not get legal title, a vote, or an entry on any shareholder register.
+Which issuer's paper you end up holding is a real choice, and Expert mode lets you make it. Auto makes it for you, on cost.
 
-<Card title="What you own, precisely" icon="layer-group" href="/concepts/what-you-own">
-  Underlyings, wrappers, listings — the three words that make the rest of this documentation readable.
+<Card title="Underlyings, wrappers, listings" icon="layer-group" href="/concepts/what-you-own">
+  The three words that make the rest of this documentation readable.
 </Card>
 
 ## Why the cheapest listing is not obvious
 
-The same stock can be a dozen different tokens. xStocks mints one on Solana, Ondo mints another, Coinbase and Robinhood mint their own on their own chains. They trade in separate pools, so at any moment they trade at different prices, with different depth and different spreads.
+A listing's price tells you almost nothing about what buying it will cost. A cent of spread advantage does not survive a three-dollar bridge, and depth beats headline price as soon as your order is large enough to move the pool.
 
-Buying the wrong one costs you real money before the stock has moved at all. oka simulates the whole path for every open listing — moving your stables to the right chain, the swap itself, the gas, the fee — and takes the one that ends up cheapest.
+oka simulates the whole path for every open listing and ranks them on the total. A listing with the best sticker price routinely loses.
 
 <Card title="How the routing works" icon="route" href="/concepts/routing">
-  Auto mode, Expert mode, and why an order either fills at the quoted price or does not happen.
+  Auto against Expert, split sells, and what happens to a route that fails halfway.
 </Card>
 
-## Where to start
+## An index, in one token
 
-<Columns cols={2}>
-  <Card title="Buy your first stock" icon="rocket" href="/quickstart">
-    Sign in, deposit, buy. Five minutes, three steps.
-  </Card>
-  <Card title="Deposit stables" icon="wallet" href="/guides/deposit">
-    Two ways in, and the one mistake that cannot be undone.
-  </Card>
-  <Card title="What it costs" icon="receipt" href="/reference/costs">
-    Every line you pay, and which of them oka keeps.
-  </Card>
-  <Card title="Chains and issuers" icon="link" href="/reference/chains-and-issuers">
-    The six chains and five issuers oka executes on today.
-  </Card>
-</Columns>
+**IOKA** is a basket of five tokenized stocks held in a vault, tradable as a single token — one trade instead of five, and one position instead of five to rebalance. **OKA** governs what that basket holds.
+
+The pool IOKA trades in is run by oka itself, which is what keeps its price tethered to what the basket is actually worth, and what turns market-making spread into something the fund keeps.
+
+<Card title="OKA and IOKA" icon="coins" href="/concepts/tokens">
+  How the fund works, where its fees go, and what is live today.
+</Card>

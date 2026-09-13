@@ -5,22 +5,24 @@ description: "The six chains oka executes on, the five issuers it buys from, and
 
 ## Chains
 
-| Chain | Settles in | Minimum trade | Minimum deposit | Minimum withdrawal |
-|---|---|---|---|---|
-| Solana | USDC | $1 | $1 | $2 |
-| Base | USDC | $1 | $1 | $2 |
-| Arbitrum One | USDC | $1 | $1 | $2 |
-| BSC | USDC (Binance-Peg) | $2 | $1 | $2 |
-| Robinhood | USDG | $1 | $1 | $2 |
-| Ethereum | USDC | $10 | $15 | $25 |
+| Chain | Settles in | Min trade | Min deposit | Deposit fee | Min withdrawal |
+|---|---|---|---|---|---|
+| Base | USDC | $1 | $10 | — | $2 |
+| Solana | USDC | $1 | $10 | $1 | $2 |
+| Arbitrum One | USDC | $1 | $10 | $1 | $2 |
+| BSC | USDC (Binance-Peg) | $2 | $10 | $1 | $2 |
+| Robinhood Chain | **USDG** | $1 | $20 | $1 | $2 |
+| Ethereum | USDC | $10 | $20 | $1 | $25 |
 
-Solana is the default for deposits and withdrawals: it is the cheapest way in and out, at roughly a cent a transfer.
+Base is where oka operates: every balance is held there and every order is priced from there. It is the only chain with no deposit fee, because there is nothing to bridge.
 
-Ethereum's numbers are higher across the board for one reason, gas. A $5 deposit that costs $3 to send is not a deposit worth making, and a $5 trade whose gas exceeds its spread is not a trade worth placing.
+Ethereum's numbers are higher for one reason, gas. A $5 deposit that costs $3 to send is not a deposit worth making.
 
 <Note>
   **Robinhood Chain has no USDC.** It settles in USDG, the Global Dollar. The deposit screen names the right token for whichever chain you pick — send anything else and it cannot be recovered.
 </Note>
+
+Trade minimums apply **per listing**, not per order: a $3 buy stops considering Ethereum and BSC rather than being refused.
 
 ## Issuers
 
@@ -46,4 +48,6 @@ The mechanism belongs to the issuer, not to oka. It is worth knowing which one y
 
 ## Coverage
 
-18 underlyings, 41 wrappers, six chains. The catalog is what oka can execute against today, not a promise about tomorrow — listings open and close, and a wrapper whose pool has gone quiet stops being offered.
+Over **700** stocks and ETFs, across **962** wrappers and close to **3,000** listings.
+
+That is what oka can execute against today, not a promise about tomorrow — listings open and close, and a wrapper whose pool has gone quiet stops being offered.

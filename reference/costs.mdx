@@ -1,9 +1,19 @@
 ---
 title: "What it costs"
-description: "Every line you pay on a trade, who receives it, and which ones oka can do anything about."
+description: "Every line between your stables and your position, who receives it, and which ones oka can do anything about."
 ---
 
-Four things can appear between your stables and your position. The order ticket names each one before you confirm, so the all-in figure is never a number you have to take on faith.
+Three things can appear between your stables and your position, and one of them only once. The order ticket names each before you confirm, so the all-in figure is never a number you have to take on faith.
+
+## Getting money in
+
+**$1 per deposit**, flat — it repatriates your funds to Base, where oka operates, which is what keeps the fees on your trades low. Deposits already on Base are free.
+
+<Note>
+  Above **$10,000** a deposit can carry up to an extra **0.1%**, disclosed before you send.
+</Note>
+
+Minimums: **$10** on Solana, Base, Arbitrum and BSC, **$20** on Ethereum and Robinhood Chain.
 
 ## The spread
 
@@ -13,30 +23,32 @@ It is also the one routing exists to attack: comparing listings is mostly compar
 
 ## The gas take
 
-Chains charge gas in their own token — ETH, SOL, BNB — and you hold stables. oka pays the gas and charges you the equivalent in stables, so you never have to keep a native balance on five chains just to be able to trade.
+Chains charge gas in their own token — ETH, SOL, BNB — and you hold stables. oka pays the gas and charges you the equivalent in stables, so you never keep a native balance on five chains just to be able to trade.
 
-It is an estimate made before the fact, with a margin, because gas moves between the moment you are quoted and the moment the transaction lands. There is a floor of **$0.01** per trade so the amount is never dust; on Solana, where fees are both tiny and predictable, it is a flat **$0.005**.
+It is an estimate made before the fact, with a **20% buffer**, because gas moves between the quote and the transaction landing. There is a floor of **$0.01** per trade so the amount is never dust; on Solana, where fees are tiny and predictable, it is a flat **$0.005**. Some venues settle through a solver who pays the gas themselves — on those fills there is no gas take at all.
 
-The gas take scales with the chain, not with your order. This is what makes small trades on Ethereum unattractive and why its minimums are higher than everywhere else.
+It scales with the chain, not with your order. That is what makes small trades on Ethereum unattractive and why its minimum is higher.
 
 ## The bridge fee
 
-Charged only when a route has to move your stables to another chain to reach the listing it picked. It goes to the bridge.
+Charged when a route leaves Base to reach a listing, and again on the way home from a sale. It goes to the bridge, and it is inside the number the ranking compares — a listing that is expensive to reach loses on the total, not on its sticker.
 
-Cash already sitting on the right chain skips this entirely, which is why a retry after a failed fill is often cheaper than the attempt before it.
+## What oka takes today
 
-## oka's fee
+**Nothing.** No platform fee is charged on a trade. The two lines above are passed through: gas to the chain, bridge to the bridge.
 
-The take, charged on a buy and on a sale. It is shown as its own line on the ticket and included in the all-in number you are quoted.
+<Note>
+  **Planned: 0.25% platform fee.** A quarter of a percent on a trade, of which **40% goes to whoever referred you** — and to the platform when nobody did. It is not charged today and does not appear on any ticket.
+</Note>
+
+## Execution tolerance
+
+A fill is guaranteed against the quoted output **minus 100 basis points**, not against the quoted price to the cent. Between confirming and landing, the pool moves; that band is what stops a trade reverting on a one-tick drift. Past it, the trade fails and nothing is spent.
 
 ## What is free
 
-Depositing. Withdrawing — you pay the network's gas and nothing to oka. Holding a position. Having an account.
+Holding a position. Having an account. Exporting your keys. Withdrawing costs you the network's gas and nothing to oka.
 
 <Note>
-  Minimum trade sizes exist because of gas, not margin: **$1** on Solana, Base, Arbitrum and Robinhood, **$2** on BSC, **$10** on Ethereum. Below them, network fees would be a meaningful share of what you are buying.
+  Minimum trade sizes exist because of gas, not margin: **$1** on Solana, Base, Arbitrum and Robinhood Chain, **$2** on BSC, **$10** on Ethereum. They apply per listing rather than per order — a trade too small for Ethereum simply stops considering Ethereum listings.
 </Note>
-
-<Card title="Withdrawal fees by chain" icon="arrow-up-from-bracket" href="/guides/withdraw">
-  Indicative network costs, from a cent on Solana to a few dollars on Ethereum.
-</Card>

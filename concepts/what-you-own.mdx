@@ -32,7 +32,7 @@ One wrapper deployed on one chain. **AAPLx on Solana** is a listing; the same wr
 This is the unit oka actually trades. When Auto mode picks "the cheapest", it is picking a listing.
 
 <Note>
-  Underlying → wrapper → listing is a widening, not a hierarchy of quality. One underlying has several wrappers; one wrapper has several listings. Today's catalog covers 18 underlyings across 41 wrappers.
+  Underlying → wrapper → listing is a widening, not a hierarchy of quality. One underlying has several wrappers; one wrapper has several listings. The catalog covers over 700 underlyings across 962 wrappers and close to 3,000 listings.
 </Note>
 
 ## Exposure
@@ -45,7 +45,7 @@ It is not a share. No legal title, no vote, no entry on Apple's register. Your c
 
 Stables sitting in your execution wallet, unspent. Deposits land here, sale proceeds come back here, and a failed order leaves your money here rather than half-converted somewhere.
 
-Cash is always spent before oka moves anything new in, which is why a retry after a failed fill costs less than the first attempt.
+Cash lives as USDC on Base, whichever chain it arrived from, and is always spent before oka moves anything new in — which is why a retry after a failed fill costs less than the first attempt.
 
 <Card title="How oka picks a listing" icon="route" href="/concepts/routing">
   The all-in comparison, and why the best headline price often loses.

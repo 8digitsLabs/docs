@@ -1,59 +1,69 @@
 ---
 title: "Buy your first stock"
-description: "Sign in, deposit stables, place an order. Three steps, and what each of them is really doing."
+description: "Sign in, deposit stables, place an order. Three steps, and what each is really doing."
 ---
 
 Three steps stand between a new account and a position. None of them asks you to install anything.
 
 <Steps>
   <Step title="Sign in">
-    Email, Google, X or a passkey. A wallet is created for you in the same moment — one EVM smart account and one Solana keypair — so there is no extension to install and no seed phrase to write down.
+    Email, Google, X or a passkey. Two wallets are created for you in the same moment — one EVM, one Solana — so there is no extension to install and no seed phrase to write down.
 
-    The keys are yours. You can export both from the Wallet screen whenever you want, and oka never reads them.
+    The keys are yours. Export either one from the account menu whenever you want.
   </Step>
 
   <Step title="Deposit stables">
-    Send USDC to your deposit address, or connect a wallet you already use and transfer from it in one click.
+    Send the chain's settlement stablecoin to your deposit address, or connect a wallet you already use and transfer from it in one click.
 
-    Solana is the default because it is the cheapest way in: **$1** minimum, and network fees around a cent. Ethereum works too, but its minimum is **$15** — not a rule oka invented, just what makes sense when a transfer costs a few dollars in gas.
+    Minimum **$10** on Solana, Base, Arbitrum and BSC; **$20** on Ethereum and Robinhood Chain. Anything below simply is not picked up.
   </Step>
 
   <Step title="Buy">
-    Pick a stock, type an amount in dollars, confirm. oka compares every open listing for that stock, all-in, and fills the cheapest.
-
-    The quote you confirm is the price you get. If it cannot be met, nothing is bought and your stables stay where they are.
+    Pick a stock, type an amount in dollars, confirm. oka compares every listing for that stock, all-in, and fills the cheapest.
   </Step>
 </Steps>
 
+## Everything lands on Base
+
+Whatever chain you deposit from, your money is swept into USDC on Base and that is where your balance lives. The sweep costs **$1**, flat — it is the bridge, not a margin. Deposit on Base and there is nothing to bridge, so it is free.
+
+This is the decision the rest of the product rests on. One settlement chain means one balance instead of six, gas measured in cents, and a router that never has to guess where your money is sleeping.
+
+<Card title="Why Base" icon="layer-group" href="/concepts/settlement">
+  What a single settlement chain buys you, and what it costs.
+</Card>
+
 ## What "all-in" means
 
-The number oka minimizes is not the token price. It is everything you pay between the stables you hold now and the position you end up with: moving your money to the chain where the listing lives, the swap itself, the gas that the transactions burn, and oka's fee.
+The number oka minimizes is not the token price. It is everything between the stables you hold and the position you end up with: the bridge from Base to the listing's chain, the swap itself, and the gas the transactions burn.
 
 A listing with a better headline price and a thin book routinely loses to one that looks worse and costs less to reach. That comparison is the product.
 
 <Card title="How routing decides" icon="route" href="/concepts/routing">
-  The waterfall, Auto against Expert, and what happens to a route that fails halfway.
+  Auto against Expert, and what happens to a route that fails halfway.
 </Card>
 
 ## All-or-nothing
 
-An order fills at the quoted all-in price or it does not happen. There is no partial fill that leaves you with a third of a position and no explanation.
+A buy fills or it does not happen. There is no partial fill that leaves you with a third of a position and no explanation.
 
-If the quote goes stale or the swap fails, no wrapper is bought and your money stays in your execution wallet as **cash**, ready for the next attempt. A retry starts from scratch and reuses that cash first — no second transfer, and no second bridge if the stables are already on the right chain.
+The quote you confirm is honoured **within 100 basis points** — the pool moves between confirming and landing, and that band is what stops a trade reverting on a one-tick drift. Past it the trade fails, nothing is spent, and your money stays as cash ready for the next attempt.
+
+A retry starts the comparison from scratch and spends that cash first. It may well pick a different listing than the one that just failed, because the ranking has moved in the meantime.
 
 <Warning>
-  Minimum trade sizes are per chain: **$1** on Solana, Base, Arbitrum and Robinhood, **$2** on BSC, **$10** on Ethereum. They exist so that gas never eats a meaningful share of what you are buying.
+  Minimum trade sizes are per chain: **$1** on Solana, Base, Arbitrum and Robinhood Chain, **$2** on BSC, **$10** on Ethereum. They apply per listing — a trade too small for Ethereum stops considering Ethereum listings rather than being refused outright.
 </Warning>
 
 ## After the fill
 
-Your position shows up on the portfolio screen, inside the single dollar figure at the top. Selling is the same machinery inverted, and withdrawing is a plain transfer you sign yourself.
+Your position shows up on the portfolio screen, inside the single dollar figure at the top, with its cost basis and unrealised P&L once oka has executed the fill.
 
 <Columns cols={2}>
   <Card title="Sell a position" icon="arrow-right-arrow-left" href="/guides/sell">
-    Back to stables, on the chain where the wrapper sits.
+    Back to cash on Base, however many listings it takes.
   </Card>
   <Card title="Withdraw" icon="arrow-up-from-bracket" href="/guides/withdraw">
-    Send stables out to any address you control.
+    Send stables out to any address you control, on any supported chain.
   </Card>
 </Columns>

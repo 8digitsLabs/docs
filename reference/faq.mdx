@@ -17,7 +17,7 @@ description: "The questions that come up before the first deposit, and after the
   </Accordion>
 
   <Accordion title="Can I trade at any hour?">
-    Only when a listing is open. Wrappers track stock-market hours, and oka skips closed listings rather than routing you into a pool with nobody awake in it. Outside market hours you may find that fewer listings — or none — are available for a given stock.
+    Only when a listing is open. Wrappers track stock-market hours, and a venue that will not quote outside them takes its listing out of the running. Outside market hours you may find fewer listings — or none — available for a given stock.
   </Accordion>
 </AccordionGroup>
 
@@ -25,7 +25,7 @@ description: "The questions that come up before the first deposit, and after the
 
 <AccordionGroup>
   <Accordion title="Who holds my keys?">
-    You do. Signing in creates an EVM smart account and a Solana keypair, and both can be exported from the Wallet screen. oka never reads them.
+    You do. Signing in creates an EVM wallet and a Solana wallet, and either can be exported from the account menu. oka never reads them.
   </Accordion>
 
   <Accordion title="Do I need ETH or SOL to pay gas?">
@@ -37,7 +37,9 @@ description: "The questions that come up before the first deposit, and after the
   </Accordion>
 
   <Accordion title="Can oka move my money without asking?">
-    It can execute the steps of a trade you placed — that is what the session grant covers. It cannot withdraw. Sending money to an address outside your wallet requires your signature every time.
+    It can execute the steps of a trade you placed, and sweep a deposit to Base — that is what the session key covers. It cannot withdraw: sending money to an address outside your wallet requires your signature every time.
+
+    The session key is attached automatically at sign-in, without a prompt, and there is no button to revoke it. See [wallets and keys](/concepts/wallets-and-keys).
   </Accordion>
 </AccordionGroup>
 
@@ -45,21 +47,23 @@ description: "The questions that come up before the first deposit, and after the
 
 <AccordionGroup>
   <Accordion title="My order failed. Where is my money?">
-    In your execution wallet, as cash. A buy is all-or-nothing: if the quote goes stale or the swap fails, no wrapper is bought and nothing is left stranded mid-route. If your stables had already moved to another chain, oka brings them back.
+    As cash on Base. A buy is all-or-nothing: if the quote goes stale or the swap fails, no wrapper is bought. If your stables had already bridged to reach a listing, oka brings them home.
+
+    One case does not resolve cleanly — a fill that lands while the trip home fails. The wrapper is yours on that chain, and oka names it in your activity rather than reporting success.
 
     Retrying reuses that cash, skips the bridge when the money is already in the right place, and re-runs the comparison — so it may pick a different listing than the one that just failed.
   </Accordion>
 
   <Accordion title="Why is my trade more expensive on Ethereum?">
-    Gas. It is charged per transaction by the chain, not by oka, and it has nothing to do with your order size — which means it falls hardest on small trades. That is also why Ethereum's minimums are higher: $10 to trade, $15 to deposit, $25 to withdraw.
+    Gas. It is charged per transaction by the chain, not by oka, and it has nothing to do with your order size — which means it falls hardest on small trades. That is also why Ethereum's minimums are higher: $10 to trade, $20 to deposit, $25 to withdraw.
   </Accordion>
 
   <Accordion title="Can I place a limit order?">
-    Not today. Only market orders exist.
+    Not today — only market orders. Limit and TWAP orders are built and waiting to be switched on.
   </Accordion>
 
   <Accordion title="Why did oka pick that issuer?">
-    Because that listing was cheapest all-in — spread, gas, bridge and fee together — at the moment you asked. The headline price is only one term in that sum, so the winner is often not the one with the best sticker price.
+    Because that listing left you with the most stock for your money at the moment you asked — bridge and spread included. The headline price is only one term in that sum, so the winner is often not the one with the best sticker.
 
     If you want to choose the issuer and chain yourself, use [Expert mode](/concepts/routing).
   </Accordion>
