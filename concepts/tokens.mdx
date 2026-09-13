@@ -31,6 +31,15 @@ Supply is fixed. Minted once at deployment, with no mint path afterwards. No inf
 
 ## The two pools
 
+```mermaid
+flowchart LR
+  USDG[Stablecoin] <-->|"band, run by oka"| IOKA[IOKA]
+  IOKA <-->|"0.3% pool"| OKA[OKA]
+  VAULT[(Vault: 5 stocks)] -.->|"mint / burn"| IOKA
+```
+
+Buying OKA with a stablecoin crosses both, left to right. The first hop pays the band's spread, which the fund keeps.
+
 ### IOKA / USDG, the index market
 
 Where the fund trades against a stablecoin. This is the pool oka runs itself, through a Uniswap v4 hook, and it is the one that matters.
@@ -47,11 +56,42 @@ Where OKA trades, priced in fund units rather than in dollars.
 
 Pairing it against IOKA instead of a stablecoin is deliberate. OKA's whole claim is control over the fund, so quoting it in shares of that fund is the honest denomination, and it keeps liquidity in one place instead of splitting it across two stablecoin pools.
 
-It also means **every OKA trade routes through the index pool**. Buying OKA with a stablecoin is two hops: stable to IOKA across the band, then IOKA to OKA. The first hop pays the band's spread, which the fund keeps.
+<Note>
+  That routing is not theoretical. On the test deployment, one transaction bought IOKA with the stablecoin on the hook's pool and swapped it for OKA on the second, paying the band's spread on the way through.
+</Note>
+
+## How OKA is distributed
 
 <Note>
-  That routing is not theoretical. On the test deployment, a single transaction bought IOKA with the stablecoin on the hook's pool and swapped it for OKA on the second, paying the band's spread on the way through.
+  Planned. Nothing is minted or distributed yet.
 </Note>
+
+```mermaid
+pie showData
+  "Liquidity" : 70
+  "Airdrop" : 25
+  "Team" : 5
+```
+
+**70% to liquidity.** The pools have to be deep enough to trade against, and that depth is the product.
+
+**25% to the airdrop.** Earned by using the platform rather than claimed by holding something else. Points accrue as you trade, and the airdrop settles against them.
+
+**5% to the team.**
+
+<Card title="Earning points" icon="chart-line" href="/concepts/tokens#points">
+  What counts, and what does not.
+</Card>
+
+## Points
+
+Using oka earns points, and points decide the airdrop.
+
+<Note>
+  The rules below are not final. They are published here so nobody has to guess at them, and they will be restated before the airdrop settles.
+</Note>
+
+Points reward the behaviour the platform needs: volume traded, positions held rather than flipped, and liquidity provided to the pools. Referring someone earns from what they do, on top of the 40% fee share.
 
 ## Where the fees go
 
