@@ -39,7 +39,7 @@ Several venues may quote the same listing. oka keeps the best answer per listing
 
 **Quotes that are too good.** A fill fourteen times better than the market is a bug, not a deal. Implausible answers are dropped rather than routed to.
 
-**Listings too small to be worth it.** Each chain has a minimum trade size, applied per listing. A \$3 order does not get refused: it stops considering Ethereum and BSC, and fills from what is left.
+**Listings too small to be worth it.** The minimum trade size is applied per listing, not per order. A \$7 order does not get refused for being under Ethereum's \$10 floor: it stops considering Ethereum listings and fills from what is left.
 
 **Listings whose venue says the market is closed.** Wrappers track stock-market hours, and a venue that will not quote outside them takes its listing out of the running.
 
