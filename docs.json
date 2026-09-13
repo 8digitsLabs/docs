@@ -24,7 +24,8 @@
           "guides/deposit",
           "guides/buy",
           "guides/sell",
-          "guides/withdraw"
+          "guides/withdraw",
+          "guides/referrals"
         ]
       },
       {
