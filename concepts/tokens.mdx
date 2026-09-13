@@ -37,9 +37,9 @@ Supply is fixed. Minted once at deployment, with no mint path afterwards. No inf
   "lineColor":"#8a8f98","secondaryColor":"#ff8d80","tertiaryColor":"#2a2a2a",
   "fontSize":"15px"}}}%%
 flowchart LR
-  USDG[Stablecoin] <-->|"band, run by oka"| IOKA[IOKA]
-  IOKA <--> OKA[OKA]
-  VAULT[(Vault: 5 stocks)] -.->|"mint / burn"| IOKA
+  USDG[Stablecoin] <-->|"index market, made by oka"| IOKA[IOKA]
+  IOKA <-->|"governance market"| OKA[OKA]
+  VAULT[(Vault: five stocks)] -.->|"backs it"| IOKA
 ```
 
 Buying OKA with a stablecoin crosses both, left to right. The first hop pays the band's spread, which the fund keeps.
