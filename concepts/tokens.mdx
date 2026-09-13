@@ -32,9 +32,13 @@ Supply is fixed. Minted once at deployment, with no mint path afterwards. No inf
 ## The two pools
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{
+  "primaryColor":"#e8564f","primaryTextColor":"#ffffff","primaryBorderColor":"#e8564f",
+  "lineColor":"#8a8f98","secondaryColor":"#ff8d80","tertiaryColor":"#2a2a2a",
+  "fontSize":"15px"}}}%%
 flowchart LR
   USDG[Stablecoin] <-->|"band, run by oka"| IOKA[IOKA]
-  IOKA <-->|"0.3% pool"| OKA[OKA]
+  IOKA <--> OKA[OKA]
   VAULT[(Vault: 5 stocks)] -.->|"mint / burn"| IOKA
 ```
 
@@ -67,6 +71,11 @@ Pairing it against IOKA instead of a stablecoin is deliberate. OKA's whole claim
 </Note>
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{
+  "pie1":"#e8564f","pie2":"#ff8d80","pie3":"#8a8f98",
+  "pieOuterStrokeWidth":"0px","pieStrokeWidth":"0px",
+  "pieSectionTextColor":"#ffffff","pieSectionTextSize":"16px",
+  "pieLegendTextSize":"15px"}}}%%
 pie showData
   "Liquidity" : 70
   "Airdrop" : 25
