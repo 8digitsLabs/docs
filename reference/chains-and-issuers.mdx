@@ -3,18 +3,16 @@ title: "Chains and issuers"
 description: "The six chains oka executes on, the five issuers it buys from, and the numbers attached to each."
 ---
 
-export const Logo = ({ src }) => <img src={src} alt="" style={{ display: "inline-block", width: "16px", height: "16px", verticalAlign: "-3px", margin: "0 6px 0 0" }} />;
-
 ## Chains
 
 | Chain | Settles in | Min trade | Min deposit | Deposit fee | Min withdrawal |
 |---|---|---|---|---|---|
-| <Logo src="/images/chains/base.svg" /> Base | <Logo src="/images/tokens/usdc.svg" /> USDC | \$5 | \$10 | None | \$2 |
-| <Logo src="/images/chains/solana.svg" /> Solana | <Logo src="/images/tokens/usdc.svg" /> USDC | \$5 | \$10 | \$1 | \$2 |
-| <Logo src="/images/chains/arbitrum.svg" /> Arbitrum One | <Logo src="/images/tokens/usdc.svg" /> USDC | \$5 | \$10 | \$1 | \$2 |
-| <Logo src="/images/chains/bnb.svg" /> BSC | <Logo src="/images/tokens/usdc.svg" /> USDC | \$5 | \$10 | \$1 | \$2 |
-| <Logo src="/images/chains/robinhood.svg" /> Robinhood Chain | <Logo src="/images/tokens/usdg.avif" /> **USDG** | \$5 | \$20 | \$1 | \$2 |
-| <Logo src="/images/chains/ethereum.svg" /> Ethereum | <Logo src="/images/tokens/usdc.svg" /> USDC | \$10 | \$20 | \$1 | \$25 |
+| <img src="/images/chains/base.svg" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Base | <img src="/images/tokens/usdc.svg" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> USDC | \$5 | \$10 | None | \$2 |
+| <img src="/images/chains/solana.svg" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Solana | <img src="/images/tokens/usdc.svg" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> USDC | \$5 | \$10 | \$1 | \$2 |
+| <img src="/images/chains/arbitrum.svg" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Arbitrum One | <img src="/images/tokens/usdc.svg" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> USDC | \$5 | \$10 | \$1 | \$2 |
+| <img src="/images/chains/bnb.svg" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> BSC | <img src="/images/tokens/usdc.svg" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> USDC | \$5 | \$10 | \$1 | \$2 |
+| <img src="/images/chains/robinhood.svg" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Robinhood Chain | <img src="/images/tokens/usdg.avif" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> **USDG** | \$5 | \$20 | \$1 | \$2 |
+| <img src="/images/chains/ethereum.svg" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Ethereum | <img src="/images/tokens/usdc.svg" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> USDC | \$10 | \$20 | \$1 | \$25 |
 
 Base is where oka operates: every balance is held there and every order is priced from there. It is the only chain with no deposit fee, because there is nothing to bridge.
 
@@ -30,11 +28,11 @@ Trade minimums apply **per listing**, not per order: a \$7 buy stops considering
 
 | Issuer | Legal entity | Jurisdiction | Corporate actions |
 |---|---|---|---|
-| <Logo src="/images/issuers/xstocks.png" /> xStocks | Backed Assets (JE) Limited | Jersey | Scaled UI |
-| <Logo src="/images/issuers/ondo.png" /> Ondo Stocks | Ondo Global Markets (BVI) Limited | British Virgin Islands | Scaled UI |
-| <Logo src="/images/issuers/coinbase.svg" /> Coinbase Tokenized Stocks | Coinbase Onchain SPV Ltd | ADGM | Multiplier |
-| <Logo src="/images/issuers/robinhood.png" /> Robinhood Stock Tokens | Robinhood Assets (Jersey) Limited | Jersey | None |
-| <Logo src="/images/issuers/backpack.png" /> Backpack Tokenized Securities | Backpack Securities Global Limited | New Zealand | Rebase |
+| <img src="/images/issuers/xstocks.png" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> xStocks | Backed Assets (JE) Limited | Jersey | Scaled UI |
+| <img src="/images/issuers/ondo.png" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Ondo Stocks | Ondo Global Markets (BVI) Limited | British Virgin Islands | Scaled UI |
+| <img src="/images/issuers/coinbase.svg" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Coinbase Tokenized Stocks | Coinbase Onchain SPV Ltd | ADGM | Multiplier |
+| <img src="/images/issuers/robinhood.png" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Robinhood Stock Tokens | Robinhood Assets (Jersey) Limited | Jersey | None |
+| <img src="/images/issuers/backpack.png" alt="" style={{display:"inline-block",width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Backpack Tokenized Securities | Backpack Securities Global Limited | New Zealand | Rebase |
 
 Each issuer mints its own wrappers under its own terms. Two wrappers on the same stock are different instruments with different counterparties, which is why Expert mode lets you choose between them.
 
