@@ -31,19 +31,15 @@ oka does not run its own pools for tokenized stocks. It asks the venues that do:
 
 Several venues may quote the same listing. oka keeps the best answer per listing and compares listings, leaving the choice of pool to the aggregator.
 
-<Note>
-  Some venues settle through a solver who pays the gas themselves. On those fills there is no gas take, which can flip the ranking between two listings that looked identical.
-</Note>
-
 ## What drops out
 
-**Quotes that are too good.** A fill fourteen times better than the market is a bug, so implausible answers are dropped.
+**Quotes that are too good.** A quote implausibly better than the market is a bug, so it is dropped.
 
 **Listings too small to be worth it.** The minimum trade size applies per listing rather than per order. A \$7 order is not refused for being under Ethereum's \$10 floor: it stops considering Ethereum listings and fills from what is left.
 
 **Listings whose venue says the market is closed.** Wrappers track stock-market hours, and a venue that will not quote outside them takes its listing out of the running.
 
-**Routes that keep failing.** A listing that answers "no route" three times in a row leaves the comparison for an hour, and a venue that fails twenty times leaves entirely. A listing can therefore disappear for reasons unrelated to hours or liquidity.
+**Routes that keep failing.** A venue that cannot deliver drops out for a while. A listing can therefore disappear for reasons unrelated to hours or liquidity.
 
 ## Auto and Expert
 
@@ -75,4 +71,4 @@ When it fails, the money stops as cash on Base. If the stables had already bridg
 
 Buys take one listing. Large sells sometimes cannot, so oka splits the exit across several: the fewest legs that cover the amount, emptying your smallest lots first.
 
-Those legs execute independently, which is the one case where a result lands in between: `completed_partial`, with the activity screen naming which legs settled.
+Those legs execute independently, which is the one case where a result lands in between. The activity screen names which of them settled.

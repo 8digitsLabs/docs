@@ -1,31 +1,17 @@
 ---
-title: "Base, and one balance"
-description: "Why every deposit ends up as USDC on Base, what that buys you, and what it costs."
+title: "One balance"
+description: "Your cash is a single figure in USDC on Base, whatever chain you sent it from."
 ---
 
-Hold stables across several chains and you end up with forty dollars on Solana, twelve on Arbitrum and a hundred and ten on Base, none of which can buy what the others can. oka collapses that into one number.
+Hold stables across several chains and you end up with forty dollars on Solana, twelve on Arbitrum and a hundred and ten on Base, none of which can buy what the others can. oka keeps your cash as one number instead.
 
-## The sweep
+That number is **USDC on Base**. Deposit from any supported chain and your stables are bridged there automatically, as their own step, before any order. It costs **\$1** flat, which pays for the bridge, and depositing on Base is free.
 
-Deposit on any supported chain and your stables are bridged into **USDC on Base**, automatically, as their own step, before and independent of any order you place. It costs **\$1**, flat, which pays for the bridge. Deposit on Base and there is nothing to bridge, so it is free.
+Every order starts from there. Base gas is cents, so the fixed cost of beginning a trade stays small, and every listing is quoted the same way: from USDC on Base, out to wherever the listing lives. A route that fails on the way comes home to Base, so there is one place for your money to be when something goes wrong.
 
-## What it buys
+## Coming back
 
-**One balance.** Your cash is a single figure. Nothing is stranded on a chain you have forgotten about, and nothing has to be moved by hand before you can use it.
-
-**Cheap execution.** Base gas is cents. Every order starts there, so the fixed cost of touching a chain is the smallest it can be.
-
-**A router with one job.** Every quote is priced the same way: USDC on Base, to the listing, wherever it lives. Comparing listings becomes comparing routes from a known starting point.
-
-**Fewer failure modes.** A route that fails mid-flight comes home to Base. There is one place for money to be when something goes wrong, and one place to retry from.
-
-## What it costs
-
-**A dollar per deposit**, which matters most on small ones. A \$10 deposit pays 10%; a \$500 deposit pays 0.2%. Depositing more, less often, is cheaper, and depositing on Base is free.
-
-**A bridge on the way out.** Selling a wrapper that lives on Solana brings the proceeds home to Base, and withdrawing to Solana bridges them back out. A round trip that starts and ends elsewhere crosses the bridge twice.
-
-**A dependency.** Base being unavailable is oka being unavailable. That is the trade for everything above.
+Selling a wrapper that lives on Solana brings the proceeds home to Base. Withdrawing them to Solana bridges them out again, so a round trip that starts and ends off Base crosses the bridge twice.
 
 <Card title="What it costs to trade" icon="receipt" href="/reference/costs">
   The deposit fee alongside every other line.

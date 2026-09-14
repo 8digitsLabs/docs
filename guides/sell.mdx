@@ -25,7 +25,7 @@ A buy takes one listing. A large sell sometimes cannot: no single pool has the d
 
 When that happens oka splits the exit across several listings. It prefers the fewest legs that cover the amount, and among equivalent options it empties your smallest lots first, leaving you with fewer, larger positions rather than a long tail of dust.
 
-The legs execute independently. This is the one case where the result can land in between: some legs settled, others not. The status says `completed_partial` and the activity screen names which. Expert mode hides the listing picker for these orders.
+The legs execute independently. This is the one case where the result can land in between: some legs settled, others not, and the activity screen names which. Expert mode hides the listing picker for these orders.
 
 <Note>
   A leg that would leave a remainder too small to sell later warns you before you confirm.

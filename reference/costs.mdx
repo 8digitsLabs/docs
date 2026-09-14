@@ -1,56 +1,30 @@
 ---
 title: "What it costs"
-description: "Every line between your stables and your position, who receives it, and which ones oka can do anything about."
+description: "Every line between your stables and your position, and who receives it."
 ---
 
-Three things can appear between your stables and your position, and one of them only once. The order ticket names each before you confirm.
+The order ticket names each of these before you confirm.
 
-## Getting money in
+| | What it is | Who gets it |
+|---|---|---|
+| **Deposit** | \$1 flat, and free on Base | the bridge |
+| **Spread** | what the pool gives you against its mid price, your size included | the market |
+| **Gas** | charged in stables, so you never hold ETH, SOL or BNB | the chain |
+| **Bridge** | charged when a route leaves Base to reach a listing, and again on the way home from a sale | the bridge |
+| **Platform fee** | 0.25% on a trade, of which 40% goes to whoever referred you | oka |
 
-**\$1 per deposit**, flat: it repatriates your funds to Base, where oka operates, which is what keeps the fees on your trades low. Deposits already on Base are free.
+The spread is the largest of these on most trades, and it is what routing exists to attack: comparing listings is mostly comparing spreads and depth.
 
-<Note>
-  Above **\$10,000** a deposit can carry up to an extra **0.1%**, disclosed before you send.
-</Note>
-
-Minimums: **\$10** on Solana, Base, Arbitrum and BSC, **\$20** on Ethereum and Robinhood Chain.
-
-## The spread
-
-The difference between the pool's mid price and what you actually get, price impact included. It goes to the market, not to oka, and it is the largest cost on most trades.
-
-Routing exists to attack it: comparing listings is mostly comparing spreads and depth. A pool that is thin for your size costs more than one whose headline price looks worse.
-
-## The gas take
-
-Chains charge gas in their own token, ETH, SOL, BNB, and you hold stables. oka pays the gas and charges you the equivalent in stables, so you never keep a native balance on five chains just to be able to trade.
-
-It is an estimate made before the fact, with a **20% buffer**, because gas moves between the quote and the transaction landing. There is a floor of **\$0.01** per trade so the amount is never dust; on Solana, where fees are tiny and predictable, it is a flat **\$0.005**. Some venues settle through a solver who pays the gas themselves, and on those fills there is no gas take.
-
-It scales with the chain, not with your order. That is what makes small trades on Ethereum unattractive and why its minimum is higher.
-
-## The bridge fee
-
-Charged when a route leaves Base to reach a listing, and again on the way home from a sale. It goes to the bridge, and it is inside the number the ranking compares: a listing that is expensive to reach loses on the total.
-
-## The platform fee
-
-**0.25%** on a trade. Of that, **40% goes to whoever referred you**, and to oka when nobody did.
-
-It is the only line oka keeps. The gas take reimburses a cost, the bridge fee belongs to the bridge, and the spread belongs to the market.
+Gas scales with the chain rather than with your order. That is what makes small trades on Ethereum unattractive, and why its minimums are higher.
 
 <Note>
-  Not charged yet. No platform fee appears on any ticket today, and the two lines above are the whole of what a trade costs.
+  No platform fee is charged today. And above **\$10,000**, a deposit can carry up to an extra **0.1%**, shown before you send.
 </Note>
-
-## Execution tolerance
-
-A fill is guaranteed against the quoted output **minus 100 basis points**, not against the quoted price to the cent. Between confirming and landing, the pool moves; that band is what stops a trade reverting on a one-tick drift. Past it, the trade fails and nothing is spent.
 
 ## What is free
 
-Holding a position. Having an account. Exporting your keys. Withdrawing costs you the network's gas and nothing to oka.
+Holding a position. Having an account. Exporting your keys. Withdrawing costs you the chain's gas and nothing to oka.
 
-<Note>
-  Minimum trade sizes exist because of gas: **\$5**, and **\$10** on Ethereum. They apply per listing rather than per order, so a trade too small for Ethereum stops considering Ethereum listings.
-</Note>
+<Card title="The numbers, chain by chain" icon="table" href="/reference/chains-and-issuers">
+  Minimums and deposit fees for each of the six.
+</Card>
