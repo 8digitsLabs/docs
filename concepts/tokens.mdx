@@ -33,12 +33,12 @@ Supply is fixed. Minted once at deployment, with no mint path afterwards. No inf
 
 ```mermaid
 flowchart LR
-  USDG[Stablecoin] <-->|"index market, made by oka"| IOKA[IOKA]
+  USDG[Stablecoin] <-->|"index market"| IOKA[IOKA]
   IOKA <-->|"governance market"| OKA[OKA]
-  VAULT[(Vault: five stocks)] -.->|"backs it"| IOKA
+  VAULT[("Vault<br/>five tokenized stocks")] -.->|"backs"| IOKA
 ```
 
-Buying OKA with a stablecoin crosses both, left to right. The first hop pays the band's spread, which the fund keeps.
+Buying OKA with a stablecoin crosses both, left to right. The first hop is the market oka makes itself, and it pays the band's spread, which the fund keeps.
 
 ### IOKA / USDG, the index market
 
@@ -98,6 +98,15 @@ The last two stack with the 40% fee share, which is paid separately and in stabl
 Every fill against the band pays the pool fee plus the band's half-spread, about **2%** one way. Re-centring as the basket moves earns more: the hook arbitrages its own quote back to fair value, and captures that spread instead of handing it to outside arbitrageurs.
 
 Buying OKA feeds the same revenue, since it has to cross the band to get there.
+
+```mermaid
+flowchart LR
+  BAND(["fills against the band,<br/>and its re-centring"]) -->|"pool fee + half-spread"| TR(["treasury"])
+  PLAT(["platform fee on<br/>tokenized stock trades"]) --> TR
+  TR -->|"half"| VAULT[("vault<br/>more stock against the same<br/>number of tokens")]
+  TR -->|"half"| BUY["buys OKA on the<br/>governance market"]
+  VAULT -.->|"net asset value rises"| HOLD(["every IOKA holder"])
+```
 
 <Note>
   The capture is on-chain and measured. The split below is treasury policy rather than something the contracts enforce. The hook pays its earnings to a single treasury address, and the allocation happens from there.
