@@ -3,6 +3,8 @@ title: "What you own"
 description: "Underlying, wrapper, listing, three words that make everything else on oka readable."
 ---
 
+export const Logo = ({ src }) => <img src={src} alt="" style={{ display: "inline-block", width: "16px", height: "16px", verticalAlign: "-3px", margin: "0 6px 0 0" }} />;
+
 The same stock can be a dozen different tokens. These three words are what let you tell them apart.
 
 ## Underlying
@@ -17,11 +19,11 @@ Five issuers mint wrappers today, and they are separate businesses with separate
 
 | Issuer | Legal entity | Jurisdiction | Corporate actions |
 |---|---|---|---|
-| <img src="/images/issuers/xstocks.png" alt="" style={{width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> xStocks | Backed Assets (JE) Limited | Jersey | Scaled UI |
-| <img src="/images/issuers/ondo.png" alt="" style={{width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Ondo Stocks | Ondo Global Markets (BVI) Limited | British Virgin Islands | Scaled UI |
-| <img src="/images/issuers/coinbase.svg" alt="" style={{width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Coinbase | Coinbase Onchain SPV Ltd | ADGM | Multiplier |
-| <img src="/images/issuers/robinhood.png" alt="" style={{width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Robinhood | Robinhood Assets (Jersey) Limited | Jersey | None |
-| <img src="/images/issuers/backpack.png" alt="" style={{width:"16px",verticalAlign:"-3px",marginRight:"6px"}} /> Backpack | Backpack Securities Global Limited | New Zealand | Rebase |
+| <Logo src="/images/issuers/xstocks.png" /> xStocks | Backed Assets (JE) Limited | Jersey | Scaled UI |
+| <Logo src="/images/issuers/ondo.png" /> Ondo Stocks | Ondo Global Markets (BVI) Limited | British Virgin Islands | Scaled UI |
+| <Logo src="/images/issuers/coinbase.svg" /> Coinbase | Coinbase Onchain SPV Ltd | ADGM | Multiplier |
+| <Logo src="/images/issuers/robinhood.png" /> Robinhood | Robinhood Assets (Jersey) Limited | Jersey | None |
+| <Logo src="/images/issuers/backpack.png" /> Backpack | Backpack Securities Global Limited | New Zealand | Rebase |
 
 Two wrappers on the same underlying are not interchangeable. They have different issuers, different terms, different liquidity, and they trade at different prices.
 
