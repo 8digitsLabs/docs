@@ -33,7 +33,9 @@ description: "The questions that come up before the first deposit, and after the
   </Accordion>
 
   <Accordion title="Which stablecoin do I send?">
-    USDC on every chain except Robinhood Chain, which has no USDC and settles in USDG, the Global Dollar. The deposit screen always names the correct token for the chain you picked, send anything else and it cannot be recovered.
+    USDC on every chain except Robinhood Chain, which has no USDC and settles in USDG, the Global Dollar. The deposit screen always names the correct token for the chain you picked.
+
+    Other tokens are not picked up yet, and they stay in your execution wallet, whose keys you hold. The case to avoid is the wrong chain: a token sent on a chain oka does not support may not be recoverable.
   </Accordion>
 
   <Accordion title="Can oka move my money without asking?">
@@ -49,7 +51,7 @@ description: "The questions that come up before the first deposit, and after the
   <Accordion title="My order failed. Where is my money?">
     As cash on Base. A buy is all-or-nothing: if the quote goes stale or the swap fails, no wrapper is bought. If your stables had already bridged to reach a listing, oka brings them home.
 
-    One case does not resolve cleanly: a fill that lands while the trip home fails. The wrapper is yours on that chain, and oka names it in your activity rather than reporting success.
+    One case does not resolve cleanly: a fill that lands while the trip home fails. The wrapper is yours on that chain, and oka names it in your activity.
 
     Retrying reuses that cash, skips the bridge when the money is already in the right place, and re-runs the comparison, so it may pick a different listing than the one that just failed.
   </Accordion>
@@ -67,12 +69,12 @@ description: "The questions that come up before the first deposit, and after the
   </Accordion>
 
   <Accordion title="Why did oka pick that issuer?">
-    Because that listing left you with the most stock for your money at the moment you asked, bridge and spread included. The headline price is only one term in that sum, so the winner is often not the one with the best sticker.
+    Because that listing left you with the most stock for your money at the moment you asked, bridge and spread included. The headline price is only one term in that sum.
 
     If you want to choose the issuer and chain yourself, use [Expert mode](/concepts/routing).
   </Accordion>
 
   <Accordion title="Why can't I choose the exchange it trades on?">
-    Because it is not a decision with a good answer. Which pool the swap crosses is a routing problem, solved by an aggregator against live liquidity. Neither Auto nor Expert exposes it.
+    Which pool the swap crosses is a routing problem, solved by an aggregator against live liquidity. Neither Auto nor Expert exposes it.
   </Accordion>
 </AccordionGroup>

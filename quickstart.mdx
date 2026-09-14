@@ -1,6 +1,6 @@
 ---
 title: "Buy your first stock"
-description: "Sign in, deposit stables, place an order. Three steps, and what each is really doing."
+description: "Sign in, deposit stables, place an order. Three steps, and what each one does."
 ---
 
 Three steps stand between a new account and a position. None of them asks you to install anything.
@@ -15,7 +15,7 @@ Three steps stand between a new account and a position. None of them asks you to
   <Step title="Deposit stables">
     Send the chain's settlement stablecoin to your deposit address, or connect a wallet you already use and transfer from it in one click.
 
-    Minimum **\$10** on Solana, Base, Arbitrum and BSC; **\$20** on Ethereum and Robinhood Chain. Anything below simply is not picked up.
+    Minimum **\$10** on Solana, Base, Arbitrum and BSC; **\$20** on Ethereum and Robinhood Chain. Anything below is not picked up.
   </Step>
 
   <Step title="Buy">
@@ -29,9 +29,9 @@ Three steps stand between a new account and a position. None of them asks you to
 
 ## Everything lands on Base
 
-Whatever chain you deposit from, your money is swept into USDC on Base and that is where your balance lives. The sweep costs **\$1**, flat: it is the bridge, not a margin. Deposit on Base and there is nothing to bridge, so it is free.
+Whatever chain you deposit from, your money is swept into USDC on Base, and that is where your balance lives. The sweep costs **\$1**, flat, which pays for the bridge. Deposit on Base and there is nothing to bridge, so it is free.
 
-This is the decision the rest of the product rests on. One settlement chain means one balance instead of six, gas measured in cents, and a router that never has to guess where your money is sleeping.
+One settlement chain means one balance instead of six, gas measured in cents, and a router that prices every quote from the same starting point.
 
 <Card title="Why Base" icon="layer-group" href="/concepts/settlement">
   What a single settlement chain buys you, and what it costs.
@@ -41,7 +41,7 @@ This is the decision the rest of the product rests on. One settlement chain mean
 
 The number oka minimizes is not the token price. It is everything between the stables you hold and the position you end up with: the bridge from Base to the listing's chain, the swap itself, and the gas the transactions burn.
 
-A listing with a better headline price and a thin book routinely loses to one that looks worse and costs less to reach. That comparison is the product.
+A listing with a better headline price and a thin book can lose to one that looks worse and costs less to reach.
 
 <Card title="How routing decides" icon="route" href="/concepts/routing">
   Auto against Expert, and what happens to a route that fails halfway.
@@ -49,19 +49,17 @@ A listing with a better headline price and a thin book routinely loses to one th
 
 ## All-or-nothing
 
-A buy fills or it does not happen. There is no partial fill that leaves you with a third of a position and no explanation.
+A buy fills or it does not happen. There is no partial fill.
 
-If it cannot fill, nothing is spent and your money stays as cash, ready for the next attempt.
-
-A retry starts the comparison from scratch and spends that cash first. It may well pick a different listing than the one that just failed, because the ranking has moved in the meantime.
+If it cannot fill, nothing is spent and your money stays as cash, ready for the next attempt. A retry starts the comparison from scratch and spends that cash first, so it may pick a different listing than the one that just failed.
 
 <Warning>
-  The minimum trade is **\$5**, and **\$10** on Ethereum. It applies per listing: a trade too small for Ethereum stops considering Ethereum listings rather than being refused outright.
+  The minimum trade is **\$5**, and **\$10** on Ethereum. It applies per listing: a trade too small for Ethereum stops considering Ethereum listings instead of being refused.
 </Warning>
 
 ## After the fill
 
-Your position shows up on the portfolio screen, inside the single dollar figure at the top, with its cost basis and unrealised P&L once oka has executed the fill.
+Your position shows up on the portfolio screen, inside the single dollar figure at the top, with its cost basis and unrealised P&L.
 
 <Columns cols={2}>
   <Card title="Sell a position" icon="arrow-right-arrow-left" href="/guides/sell">

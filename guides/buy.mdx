@@ -9,9 +9,9 @@ Pick a stock, type an amount in dollars, confirm. What sits between those is a c
 
 oka prices the stock on **every listing that carries it**, each issuer, on each chain, and ranks them by what you actually end up holding for your money.
 
-That number is not the sticker price. It is the sticker price after the bridge from Base to the listing's chain, after the spread you cross in its pool, and after the gas the transactions burn. A listing with the best headline routinely loses on the total.
+That number is not the sticker price. It is the sticker price after the bridge from Base to the listing's chain, after the spread you cross in its pool, and after the gas the transactions burn.
 
-Several venues may quote the same listing; oka keeps the best of them and compares listings, not routes. Quotes that come back implausibly good are dropped rather than routed to: a fill fourteen times better than the market is a bug, not a deal.
+Several venues may quote the same listing; oka keeps the best of them and compares listings. Quotes that come back implausibly good are dropped: a fill fourteen times better than the market is a bug.
 
 <Frame caption="The buy ticket: amount, what you receive, and the route it picked.">
   <img src="/images/buy-ticket.png" alt="The buy ticket in Auto mode" />
@@ -23,10 +23,10 @@ Several venues may quote the same listing; oka keeps the best of them and compar
 
 **Expert** shows every listing side by side with its all-in cost and lets you choose the issuer and chain. Use it when you have a reason to hold one issuer's paper over another's: they are different instruments with different counterparties.
 
-Neither mode lets you choose the execution venue. Which pool the swap crosses is the aggregator's problem, and turning it into a question would be asking you something with no good answer.
+Neither mode lets you choose the execution venue. Which pool the swap crosses is left to the aggregator.
 
 <Note>
-  An Expert pick is honoured only if it can actually execute. A listing with no live quote is not selectable, and the ticket says so rather than routing you somewhere else silently.
+  An Expert pick is honoured only if it can execute. A listing with no live quote is not selectable, and the ticket says so.
 </Note>
 
 ## What you end up with
@@ -36,7 +36,7 @@ The wrapper lands in your execution wallet on the listing's chain, and the posit
 A buy is all-or-nothing. If the quote goes stale, the swap reverts, or the route fails, nothing is bought and your money stays as cash on Base, ready for the next attempt. If the stables had already bridged to reach a listing that then failed, they are brought home.
 
 <Warning>
-  In rare cases a fill lands but the trip home does not. oka calls that out explicitly in your activity rather than quietly reporting success: the wrapper is yours, on that chain, and support can finish the move.
+  In rare cases a fill lands but the trip home does not. oka names it in your activity: the wrapper is yours, on that chain, and support can finish the move.
 </Warning>
 
 <Card title="How the ranking works" icon="route" href="/concepts/routing">

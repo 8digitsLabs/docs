@@ -3,30 +3,28 @@ title: "Introduction"
 description: "Buy tokenized stocks with stablecoins, at the cheapest all-in price across every issuer and chain that lists them."
 ---
 
-The same stock can be a dozen different tokens. xStocks mints one on Solana, Ondo another on Ethereum, Coinbase and Robinhood mint their own on their own chains. They trade in separate pools, so at any moment they trade at different prices, with different depth and different spreads.
+The same stock can be a dozen different tokens. xStocks mints one on Solana, Ondo another on Ethereum, Coinbase and Robinhood mint their own on their own chains. They trade in separate pools, so at any moment they carry different prices, different depth and different spreads.
 
-Buying the wrong one costs you real money before the stock has moved at all.
+Buying the wrong one costs you money before the stock has moved.
 
-oka prices every one of them and fills the cheapest, not the cheapest sticker, the cheapest **all-in**: the bridge to reach it, the spread you cross, the gas it burns. That comparison is the product.
+oka prices all of them and fills the cheapest, measured all-in: the bridge to reach it, the spread you cross, and the gas it burns.
 
 ## What you get
 
 **Over 700 stocks and ETFs**, across **five issuers** and **six chains**, close to three thousand listings, priced against each other every time you place an order.
 
-**Everything in one place.** Tokenized stocks scatter: six chains, five issuers, a different token for the same company on each. oka holds them as one portfolio, one line per company, with what you paid and what it is worth now. Open a line and the issuers and chains behind it are still there, when you want them.
+**Everything in one place.** oka holds your wrappers as one portfolio, one line per company, with what you paid and what it is worth now. Open a line to see the issuers and chains behind it.
 
-**One balance.** Deposits from any chain are swept into USDC on Base, so your cash is one number instead of six.
+**One balance.** Deposits from any chain are swept into USDC on Base, so your cash is a single number.
 
-**No seed phrase, no extension.** Sign in with an email address, Google, X or a passkey. Wallets are created for you in the same moment, and the keys are exportable whenever you want.
-
-**You pay the market, not us.** oka makes nothing on the spread you cross. Its interest is in finding you the listing where that spread is smallest.
+**No seed phrase, no extension.** Sign in with an email address, Google, X or a passkey. Your wallets are created in the same moment, and you can export the keys whenever you want.
 
 <Columns cols={2}>
   <Card title="Buy your first stock" icon="rocket" href="/quickstart">
     Sign in, deposit, buy. Three steps.
   </Card>
   <Card title="What it costs" icon="receipt" href="/reference/costs">
-    Every line you pay, and which of them reach us.
+    Every line you pay, and where each one goes.
   </Card>
 </Columns>
 
@@ -36,9 +34,9 @@ oka prices every one of them and fills the cheapest, not the cheapest sticker, t
 
 ## What you are actually buying
 
-Not a share. When you buy AAPL on oka, you receive a **wrapper**: a token an issuer mints to track Apple's price. You get economic exposure to the price. You do not get legal title, a vote, or an entry on any shareholder register.
+Not a share. When you buy AAPL on oka you receive a **wrapper**: a token an issuer mints to track Apple's price. You get economic exposure to that price. You do not get legal title, a vote, or an entry on any shareholder register, and your claim is on the issuer rather than on Apple.
 
-Which issuer's paper you end up holding is a real choice, and Expert mode lets you make it. Auto makes it for you, on cost.
+Which issuer's paper you hold is a real choice. Expert mode lets you make it; Auto makes it on cost.
 
 <Card title="Underlyings, wrappers, listings" icon="layer-group" href="/concepts/what-you-own">
   The three words that make the rest of this documentation readable.
@@ -46,9 +44,9 @@ Which issuer's paper you end up holding is a real choice, and Expert mode lets y
 
 ## Why the cheapest listing is not obvious
 
-A listing's price tells you almost nothing about what buying it will cost. A cent of spread advantage does not survive a three-dollar bridge, and depth beats headline price as soon as your order is large enough to move the pool.
+A listing's price tells you little about what buying it will cost. A cent of spread advantage does not survive a three-dollar bridge, and depth starts to matter as soon as your order is large enough to move the pool.
 
-oka simulates the whole path for every open listing and ranks them on the total. A listing with the best sticker price routinely loses.
+oka simulates the whole path for every open listing and ranks them on the total.
 
 <Card title="How the routing works" icon="route" href="/concepts/routing">
   Auto against Expert, split sells, and what happens to a route that fails halfway.
@@ -56,9 +54,13 @@ oka simulates the whole path for every open listing and ranks them on the total.
 
 ## An index, in one token
 
-**IOKA** is a basket of five tokenized stocks held in a vault, tradable as a single token, one trade instead of five, and one position instead of five to rebalance. **OKA** governs what that basket holds.
+**IOKA** is a basket of five tokenized stocks held in a vault and tradable as a single token: one trade instead of five, one position to rebalance instead of five. **OKA** governs what the basket holds.
 
-The pool IOKA trades in is run by oka itself, which is what keeps its price tethered to what the basket is actually worth, and what turns market-making spread into something the fund keeps.
+oka runs the pool IOKA trades in, which is what holds its price to the basket's value and what turns market-making spread into revenue for the fund.
+
+<Note>
+  IOKA and OKA run on a test deployment today. Nothing is minted or distributed yet.
+</Note>
 
 <Card title="OKA and IOKA" icon="coins" href="/concepts/tokens">
   How the fund works, where its fees go, and what is live today.

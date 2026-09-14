@@ -7,7 +7,7 @@ Selling is buying backwards, with two differences worth knowing.
 
 ## Only what you hold is priced
 
-A buy compares every listing that exists. A sell compares only the listings you actually own, because those are the only ones that can be sold.
+A buy compares every listing that exists. A sell compares only the listings you own, because those are the only ones that can be sold.
 
 Each is priced at your size, and the proceeds are **bridged home to Base**, where your cash lives. That bridge is part of the comparison: a listing on an expensive chain to leave loses to one that is cheaper to exit, even at a slightly worse price.
 
@@ -21,15 +21,15 @@ A buy takes one listing. A large sell sometimes cannot: no single pool has the d
 
 When that happens oka splits the exit across several listings. It prefers the fewest legs that cover the amount, and among equivalent options it empties your smallest lots first, leaving you with fewer, larger positions rather than a long tail of dust.
 
-The legs execute independently. This is the one case where the result can land in between: some legs settled, others not. The status says `completed_partial` and the activity screen names which. Expert mode hides the listing picker for these orders, because picking one listing for an order that needs three is not a choice.
+The legs execute independently. This is the one case where the result can land in between: some legs settled, others not. The status says `completed_partial` and the activity screen names which. Expert mode hides the listing picker for these orders.
 
 <Note>
-  A leg that would leave a remainder too small to sell later warns you before you confirm. A position you cannot exit is worse than one you sold slightly early.
+  A leg that would leave a remainder too small to sell later warns you before you confirm.
 </Note>
 
 ## What bounds a sell
 
-There is no minimum sell size. The only bound is gas: if the cost of executing on a chain would swallow the proceeds, that listing is excluded and the ticket says so by name rather than blaming the market.
+There is no minimum sell size. The only bound is gas: if the cost of executing on a chain would swallow the proceeds, that listing is excluded and the ticket names it.
 
 Everything else is the buy path in reverse.
 
