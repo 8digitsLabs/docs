@@ -54,10 +54,6 @@ Where OKA trades, priced in fund units rather than in dollars.
 
 OKA's claim is control over the fund, so it is quoted in shares of that fund rather than in dollars. That also keeps liquidity in one place instead of splitting it across two stablecoin pools.
 
-<Note>
-  On the test deployment, one transaction bought IOKA with the stablecoin on the hook's pool and swapped it for OKA on the second, paying the band's spread on the way through.
-</Note>
-
 ## How OKA is distributed
 
 | | Share | |
@@ -116,10 +112,6 @@ The IOKA / USDG pool, the one the band quotes, collects in stablecoins and fund 
 **Half buys OKA on the governance market, and burns what it buys.** Retiring supply here takes two steps instead of one, and the purchase itself is a bid on the market it crosses.
 
 **Half goes into the vault**, exactly as above: more stock behind the same number of tokens, and a higher net asset value for everyone holding IOKA.
-
-<Note>
-  The capture is on-chain and measured. The split is treasury policy rather than something the contracts enforce: the hook pays its earnings to a single treasury address, and the allocation happens from there. OKA itself is burnable by design, so a buyback contract can retire it on the treasury's behalf without ever taking custody.
-</Note>
 
 Platform fees on ordinary stock trades are separate, and they are not part of this. They are described on the costs page.
 
