@@ -62,11 +62,43 @@ It is the cost of holding, and it has no equivalent when you own a wrapper. A po
 
 ## Perps balance
 
-Margin comes from a **perps balance**, which is not your cash.
+Margin comes from a **perps balance**, and it is a third balance rather than a corner of your cash.
 
-Cash buys stocks. Perps balance backs positions. Neither can do the other's job, and moving between them is a real transfer that takes a few minutes rather than a book entry. The minimum in is \$3.
+You have cash, you have positions in stocks, and you have this. Cash buys stocks. Perps balance backs perps. Neither can do the other's job: a perps balance cannot pay for a wrapper, and cash cannot open a position without moving first.
 
-Coming back out is slower than going in: it leaves the venue on its own clock, arrives on Ethereum, and is then bridged home to Base. oka models it as one movement, but it is not instant.
+### Why it is separate
+
+It is not a design choice oka made for tidiness. The money genuinely lives somewhere else.
+
+Your cash sits in your own execution wallet, where you hold the keys and can export them. A perps balance sits on the venue that matches the orders, credited to an account anchored to your wallet address. Showing them as one number would tell you that a single figure is available for anything, when half of it is two transfers and a wait away from being usable.
+
+### Moving money in
+
+Transferring from cash sends stables from your wallet to your own funding address, and the venue credits the account a few minutes later. The minimum is \$3.
+
+The first transfer is what creates the account. There is no sign-up step and nothing to approve: the money arriving is the registration.
+
+<Note>
+  oka charges nothing to move money either way. The route still bridges, so a little of it is lost in transit: the amount that will arrive is estimated before you confirm, not after.
+</Note>
+
+### Collateral and free margin
+
+Once you have a position open, the balance splits in two.
+
+**Collateral** is everything on the account. **Free margin** is the part not currently backing a position, and it is the only part that can open a new one or leave.
+
+Opening a position moves margin from free to committed. Closing it moves the margin back, plus or minus what the position made. A liquidation moves it nowhere: that margin is gone.
+
+### Moving money out
+
+A withdrawal is capped at free margin, never at collateral. Margin backing an open position cannot leave without moving that position's liquidation price closer, so oka will not let it. Close the position first, or withdraw less.
+
+Coming out is slower than going in, and it has more legs. It leaves the venue on the venue's own clock, arrives on Ethereum, and is then bridged home to Base as cash. oka presents it as one movement and handles the steps, but it is not instant and it is not a book entry.
+
+<Warning>
+  Plan the exit before you need it. Money in a perps balance is not money you can spend on a stock the same minute.
+</Warning>
 
 ## Market and limit orders
 

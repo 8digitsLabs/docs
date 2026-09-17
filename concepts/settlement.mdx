@@ -13,6 +13,17 @@ Every order starts from there. Base gas is cents, so the fixed cost of beginning
 
 Selling a wrapper that lives on Solana brings the proceeds home to Base. Withdrawing them to Solana bridges them out again, so a round trip that starts and ends off Base crosses the bridge twice.
 
-<Card title="What it costs to trade" icon="receipt" href="/reference/costs">
-  The deposit fee alongside every other line.
-</Card>
+## The one exception
+
+Perps do not draw on this. They are margined from a **perps balance**, which sits on the venue that matches the orders rather than in your execution wallet, and moving between the two is a transfer of a few minutes rather than a book entry.
+
+It is the only balance on oka that is not your cash, and it exists because the money really is somewhere else. Everything above still holds for everything except perps.
+
+<CardGroup cols={2}>
+  <Card title="What it costs to trade" icon="receipt" href="/reference/costs">
+    The deposit fee alongside every other line.
+  </Card>
+  <Card title="Perps" icon="chart-candlestick" href="/concepts/perps">
+    The second balance, and why it is kept apart.
+  </Card>
+</CardGroup>
