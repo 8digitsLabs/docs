@@ -35,6 +35,11 @@ page unreadable:
 - **Fill** / **Exit** — a buy / a sale. Not "order" when you mean one of them specifically.
 - **Take** — oka's fee. **Gas take** — the stablecoin charge covering native gas. Distinct things.
 - **Execution wallet** — the EVM smart account plus Solana keypair created at sign-in, presented as one.
+- **Perp** — a contract tracking a reference price, with no expiry. Nothing is held. Never "future", "CFD" or "shorting the stock".
+- **Perps balance** — the stables backing perps. A third balance beside cash and positions, never called "cash".
+- **Margin** / **Leverage** / **Liquidation price** / **Funding** — the four words a perp needs. Keep margin and perps balance apart: margin is what one position uses.
+
+Never name the venue that matches a perp order. It is "the venue", and which one it is is not part of the product.
 
 Say "stables", not "stablecoins", in body copy. Say "chain", not "network".
 

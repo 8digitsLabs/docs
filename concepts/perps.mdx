@@ -1,0 +1,91 @@
+---
+title: "Perps"
+description: "Leverage, shorts and a market that never closes, on a balance kept apart from your cash."
+---
+
+Buying a wrapper gives you the stock's price and nothing else: no leverage, no way to profit from a fall, and nothing to trade while the exchange is shut. A perp is the other route. It is a separate product on a separate balance, and it works nothing like a fill.
+
+<Note>
+  Perps are for underlyings where leverage, a short, or round-the-clock access is the point. If none of those is what you want, buy the wrapper.
+</Note>
+
+## What a perp is
+
+A perpetual future: a contract whose price tracks a reference, with no expiry date. You post margin in stables, pick a side and a multiple, and your profit or loss follows the reference from there.
+
+You own nothing. There is no wrapper, no issuer and no claim on anything. That cuts both ways: no issuer can fail on you, and there is no asset to hold if the position closes.
+
+**Long** profits when the reference rises. **Short** profits when it falls. Both are one order.
+
+## What you can trade
+
+98 markets, all of them real-world references, in eight groups:
+
+| | Examples |
+|---|---|
+| **Equities** | single company names |
+| **ETFs** | the funds, not their holdings |
+| **Indices** | broad market references |
+| **Commodities** | gold, oil |
+| **FX** | currency pairs |
+| **Pre-IPO** | private companies with a traded reference |
+| **Bonds** | treasury references |
+| **Compute** | compute price references |
+
+Crypto perps are not on oka and will not be. The universe is curated by hand, one entry at a time, and a market has to be a real-world reference to enter it.
+
+## Leverage, and what it costs you
+
+Leverage is a multiple on your margin. At 10x, \$100 of margin controls a \$1,000 position, and a 1% move in the reference is a 10% move in your money.
+
+The ceiling is set per market, by how deep that market is, and it runs from 1x to 50x. The number is on each market's row.
+
+<Warning>
+  Leverage cuts the distance to liquidation by the same factor it multiplies your gains. At 20x, a 5% move against you is your whole margin.
+</Warning>
+
+## Liquidation
+
+Every open position has a **liquidation price**. If the reference reaches it, the position is closed and the margin backing it is gone.
+
+It is not a fee or a penalty, and nothing recovers from it. It is the price at which your margin no longer covers your loss, so the position stops existing. The ticket shows it before you confirm, and the position shows it while it is open.
+
+Two things move it: the size of your margin, and your leverage. Nothing else. Adding margin pushes it away, raising leverage pulls it closer.
+
+## Funding
+
+A perp has no expiry, so something has to keep it near its reference. That something is **funding**: a payment exchanged every 8 hours between the two sides.
+
+When the perp trades above its reference, longs pay shorts. When it trades below, shorts pay longs. The rate is small and it moves.
+
+It is the cost of holding, and it has no equivalent when you own a wrapper. A position held for weeks pays it dozens of times.
+
+## Perps balance
+
+Margin comes from a **perps balance**, which is not your cash.
+
+Cash buys stocks. Perps balance backs positions. Neither can do the other's job, and moving between them is a real transfer that takes a few minutes rather than a book entry. The minimum in is \$3.
+
+Coming back out is slower than going in: it leaves the venue on its own clock, arrives on Ethereum, and is then bridged home to Base. oka models it as one movement, but it is not instant.
+
+## Market and limit orders
+
+**Market** fills now, against whatever is resting in the book. You get certainty of execution and pay for it.
+
+**Limit** rests in the book at your price and waits. It may never fill, and you can cancel it at any time from the orders tab.
+
+## Cross and isolated margin
+
+**Cross** backs every position with your whole balance. One position can be saved by the others, and sunk by them.
+
+**Isolated** risks only the margin you allocate to that position. It can be liquidated without touching the rest.
+
+## Why a perp never appears next to a stock
+
+You will not find a perp on a stock's page, in markets, in top movers, or in your watchlist. That is deliberate.
+
+A wrapper is held and a perp can be liquidated. Putting them side by side for the same company makes leverage read as a setting on a purchase, which is the single most expensive misunderstanding available in this product. Perps live in their own section, and you get there on purpose.
+
+<Card title="What a perp costs" icon="receipt" href="/reference/costs">
+  The fee, the funding, and how they compare to a stock trade.
+</Card>

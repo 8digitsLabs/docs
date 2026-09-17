@@ -32,6 +32,34 @@ description: "The words oka uses, and what each one means precisely."
     What lets oka execute the steps of a trade, sweeping a deposit to Base, filling, exiting, bringing a failed route home, without prompting at each one. Attached automatically at sign-in, with no prompt and no revoke button. It does not cover withdrawals.
   </Accordion>
 
+  <Accordion title="Perp">
+    A contract that tracks a reference price with no expiry date. You post margin, pick a side and a multiple, and your profit follows the reference. You own nothing: no wrapper, no issuer, no claim on anything. Long profits when the reference rises, short when it falls.
+  </Accordion>
+
+  <Accordion title="Perps balance">
+    Stables credited to your perps account, usable as margin and for nothing else. Not your cash: it cannot buy a stock, and moving between the two is a real transfer of a few minutes rather than a book entry.
+  </Accordion>
+
+  <Accordion title="Margin">
+    The stables backing an open perp. What you stand to lose, and the thing leverage multiplies against.
+  </Accordion>
+
+  <Accordion title="Leverage">
+    The multiple of your margin a position controls. At 10x, $100 of margin controls $1,000. It multiplies the gain, the loss and the fee by the same factor, and divides the distance to liquidation by it. The ceiling is set per market and runs from 1x to 50x.
+  </Accordion>
+
+  <Accordion title="Liquidation price">
+    The reference price at which your margin no longer covers the loss, so the position is closed and the margin is gone. Not a fee and not a penalty, and nothing recovers from it. Shown before you confirm and while the position is open.
+  </Accordion>
+
+  <Accordion title="Funding">
+    A payment exchanged every 8 hours between longs and shorts, which is what holds a perp near its reference when it has no expiry to force the two together. Above the reference, longs pay. Below it, shorts pay. It is the cost of holding, and owning a wrapper has no equivalent.
+  </Accordion>
+
+  <Accordion title="Cross and isolated">
+    How margin is shared. Cross backs every position with your whole balance, so one can be saved by the others and sunk by them. Isolated risks only what you allocated to that position.
+  </Accordion>
+
   <Accordion title="All-in price">
     Everything you pay between the cash you hold and the position you end up with: spread and price impact, the bridge when the route needs one, and the gas take.
   </Accordion>

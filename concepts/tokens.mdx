@@ -85,26 +85,43 @@ The last two stack with the 40% fee share, which is paid separately and in stabl
 
 ## Where the fees go
 
-Every fill against the band pays the pool fee plus the band's half-spread, about **2%** one way. Re-centring as the basket moves earns more: the hook arbitrages its own quote back to fair value, and captures that spread instead of handing it to outside arbitrageurs.
+Each pool charges about **2%** one way: the pool fee plus the band's half-spread where the band is the one quoting. The band earns more than that on top, because re-centring is itself a trade: as the basket moves, the hook arbitrages its own quote back to fair value and keeps the spread instead of handing it to outside arbitrageurs. That market-making profit is treated as revenue like the rest.
 
-Buying OKA feeds the same revenue, since it has to cross the band to get there.
+Buying OKA with a stablecoin crosses both pools, so it pays into both.
+
+What happens next depends on which pool the money arrived in, because the two collect in different tokens and only one of them can retire OKA without buying it first.
 
 ```mermaid
 flowchart LR
-  BAND(["fills against the band,<br/>and its re-centring"]) -->|"pool fee + half-spread"| TR(["treasury"])
-  PLAT(["platform fee on<br/>tokenized stock trades"]) --> TR
-  TR -->|"half"| VAULT[("vault<br/>more stock against the same<br/>number of tokens")]
-  TR -->|"half"| BUY["buys OKA on the<br/>governance market"]
+  P1(["OKA / IOKA pool<br/>fee paid in OKA"]) -->|"half"| BURN1["burned"]
+  P1 -->|"half"| VAULT[("vault")]
+  P2(["IOKA / USDG pool<br/>fee and market making"]) -->|"half"| BUY["buys OKA back"]
+  P2 -->|"half"| VAULT
+  BUY --> BURN2["burned"]
   VAULT -.->|"net asset value rises"| HOLD(["every IOKA holder"])
 ```
 
+### The governance pool
+
+The OKA / IOKA pool charges its fee in whichever token is being sold, so a day of selling leaves it holding OKA it has already issued.
+
+**Half of it is burned.** No purchase is needed: the OKA is already there, and burning is the only way to retire it for good. Supply falls and never comes back, because nothing can mint OKA after deployment.
+
+**Half goes into the vault.** It is converted and added to the basket, so the vault holds more stock against the same number of IOKA. Every holder's claim grows without them buying anything.
+
+### The index pool
+
+The IOKA / USDG pool, the one the band quotes, collects in stablecoins and fund units rather than in OKA.
+
+**Half buys OKA on the governance market, and burns what it buys.** Retiring supply here takes two steps instead of one, and the purchase itself is a bid on the market it crosses.
+
+**Half goes into the vault**, exactly as above: more stock behind the same number of tokens, and a higher net asset value for everyone holding IOKA.
+
 <Note>
-  The capture is on-chain and measured. The split below is treasury policy rather than something the contracts enforce. The hook pays its earnings to a single treasury address, and the allocation happens from there.
+  The capture is on-chain and measured. The split is treasury policy rather than something the contracts enforce: the hook pays its earnings to a single treasury address, and the allocation happens from there. OKA itself is burnable by design, so a buyback contract can retire it on the treasury's behalf without ever taking custody.
 </Note>
 
-**Half goes back into the fund.** The vault ends up holding more stock against the same number of tokens, so every holder's claim grows. You accumulate shares by holding, without buying any.
-
-**Half buys OKA** on the market. Platform fees do the same. The token that governs the fund is bought with the money the fund and the platform make.
+Platform fees on ordinary stock trades are separate, and they are not part of this. They are described on the costs page.
 
 <Card title="What it costs to trade stocks" icon="receipt" href="/reference/costs">
   The lines on an ordinary trade, which are not these.
