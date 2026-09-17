@@ -20,7 +20,7 @@ mint dev        # http://localhost:3000
 | `index.mdx`, `quickstart.mdx` | Entry points |
 | `guides/` | Task pages: deposit, buy, sell, withdraw |
 | `concepts/` | How it works: what you own, routing, wallets and keys |
-| `reference/` | Costs, chains and issuers, glossary, FAQ |
+| `reference/` | Costs, chains and issuers, glossary, FAQ, official links |
 | `logo/`, `favicon.ico` | Brand assets, mirrored from the product repository |
 
 ## Publishing
