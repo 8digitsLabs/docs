@@ -1,13 +1,12 @@
 ---
 title: "Sealed-bid auction"
-description: "How the OKA sale works. You name the most you will pay. Every filled bid pays the same price."
+description: "How the OKA sale runs, step by step. You name the most you will pay. Every filled bid pays the same price."
 ---
 
 <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
-  <div>
-    <p>OKA is sold in a sealed bid, paid in USDG. You choose how much to spend and the most you will pay for one token. Nobody else sees those numbers.</p>
-    <p>When bidding closes, the bids are opened together. One price clears the sale. You pay that price, not the higher number you bid. What you did not spend comes back. The tokens are airdropped at launch.</p>
-  </div>
+  <p style={{ margin: 0 }}>
+    OKA is sold in a sealed bid, paid in USDG. You name what you will spend and the most you will pay. Nobody else sees those numbers. The sale then follows one order.
+  </p>
   <img
     src="/images/mascot-auction.webp"
     alt="OKA mascot"
@@ -15,27 +14,47 @@ description: "How the OKA sale works. You name the most you will pay. Every fill
   />
 </div>
 
-## What you bid
+<Steps>
+  <Step title="Place a bid">
+    You enter two numbers.
 
-**How much you will spend.** That USDG is locked until the sale settles.
+    **How much you will spend.** That USDG is locked until the sale settles.
 
-**The most you will pay for one token.** The number of tokens follows from those two. Spend 1,000 at 2.00 and the bid is for 500 tokens.
+    **The most you will pay for one token.** The number of tokens follows from those two. Spend 1,000 at 2.00 and the bid is for 500 tokens.
 
-The price starts at **0.10 USDG** and moves in steps of **0.10**. At 0.10, OKA is valued at a **100,000** market cap. A price you type is snapped down to the nearest step.
+    The price starts at **0.10 USDG** and moves in steps of **0.10**. At 0.10, OKA is valued at a **100,000** market cap. A price you type is snapped down to the nearest step.
 
-One bid per address, and it cannot ask for more than **1% of the supply**. Until the close you can add USDG or raise the price. You cannot lower it, spend less, or cancel.
+    One bid per address, and it cannot ask for more than **1% of the supply**.
 
-## One price
+    The bid is sealed. Other bidders cannot read your price or your size while the sale is open. What goes on chain is a hash and the deposit. The price and the size travel encrypted.
+  </Step>
+  <Step title="Change it before the close">
+    Until bidding closes you can add USDG or raise your price. You cannot lower it, spend less, or cancel.
 
-Tokens go to the highest bids until the supply runs out. The price of the last token sold is the **clearing price**. Every filled bid pays it.
+    Keep the receipt the app saves on your device before the transaction is sent. Once the bid is opened, that receipt is how you check that what was revealed is what you sent.
+  </Step>
+  <Step title="The bids are opened">
+    When bidding closes, oka opens every bid at once. You do not open your own. Other bidders could not read your bid while the sale was open. oka can.
 
-| Your bid | What you get |
-|---|---|
-| **Above** the clearing price | Filled in full. You pay the clearing price. The rest of the deposit comes back. |
-| **Exactly** the clearing price | A share of what is left. You may get only part of what you asked for. |
-| **Below** the clearing price | Nothing. The whole deposit comes back. |
+    A bid that is never opened is left out of the price, and the deposit comes back in full.
+  </Step>
+  <Step title="One price clears the sale">
+    Tokens go to the highest bids until the supply runs out. The price of the last token sold is the **clearing price**. Every filled bid pays that price, not the higher number that was bid.
 
-If demand falls short of the supply, the clearing price is **0.10 USDG**. Bids at or above it are filled in full, and the unsold tokens stay unsold.
+    | Your bid | What you get |
+    |---|---|
+    | **Above** the clearing price | Filled in full. You pay the clearing price. The rest of the deposit comes back. |
+    | **Exactly** the clearing price | A share of what is left. You may get only part of what you asked for. |
+    | **Below** the clearing price | Nothing. The whole deposit comes back. |
+
+    If demand falls short of the supply, the clearing price is **0.10 USDG**. Bids at or above it are filled in full, and the unsold tokens stay unsold.
+  </Step>
+  <Step title="You settle">
+    A filled bid pays the clearing price. The USDG you did not spend comes back. The tokens are airdropped at launch.
+
+    A bid below the clearing price gets nothing, and the whole deposit comes back.
+  </Step>
+</Steps>
 
 <AccordionGroup>
   <Accordion title="A clearing, in numbers">
@@ -58,11 +77,6 @@ If demand falls short of the supply, the clearing price is **0.10 USDG**. Bids a
     | Dave | 0 | 0 | 600,000 |
 
     Alice bid 3.00 and pays 1.50. Dave is out, because the supply was gone before his price. Drop Carol and Dave and demand is only 800,000: the clearing price falls to the minimum, Alice and Bob are filled in full, and 200,000 tokens are unsold.
-  </Accordion>
-  <Accordion title="What stays hidden">
-    What goes on chain is a commitment, a hash, plus the deposit. The price and the size travel encrypted. Keep the receipt the app saves on your device before the transaction is sent. Once the bid is opened, that receipt is how you check that what was revealed is what you sent.
-
-    You do not open your own bid. oka does, after bidding closes. Other bidders cannot read your price or your size while the sale is open. oka can. A bid that is never opened is left out of the price, and the deposit comes back in full.
   </Accordion>
 </AccordionGroup>
 
