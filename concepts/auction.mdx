@@ -1,0 +1,79 @@
+---
+title: "Sealed-bid auction"
+description: "How the OKA sale works. You name the most you will pay. Every filled bid pays the same price."
+---
+
+OKA is sold in a sealed-bid auction, paid in USDG. You choose how much you want to spend and the most you will pay for one token. Other bidders cannot see either number. When bidding closes, the bids are opened together, and one price clears the whole sale.
+
+You never pay your own bid if the clearing price lands lower. You pay that price, and the rest of your deposit comes back.
+
+<Note>
+  The contract settles the money. It does not hold OKA and it does not send it. Filled bids are paid in tokens afterwards, by airdrop at launch. Allocations are public, so anyone can check what each address is owed.
+</Note>
+
+## Place a bid
+
+Two numbers, in the order you actually decide them.
+
+**How much you will spend.** That amount is the deposit. It is pulled in USDG and locked for the sale.
+
+**The most you will pay for one token.** The number of tokens is the consequence of those two, not a third question. Spend 1,000 at a max price of 2.00 and the bid is for 500 tokens.
+
+The sale only accepts prices on a ladder, from a floor up to a ceiling, in fixed steps. A price you type is snapped **down** to the nearest step, so the bid never costs more than the number you entered.
+
+One bid per address, and that bid cannot ask for more than **1% of the supply**. A bid over the cap is refused. Until bidding closes you can put more USDG in, or raise the price. You cannot lower the price, spend less, or cancel. A higher price inside the same budget buys fewer tokens, and that is allowed: the money committed must not fall, the token count may.
+
+The form shows the floor, the ceiling, the minimum deposit, and that 1% cap. Do not lock a deposit on a bid the sale will refuse.
+
+What goes on chain is a commitment, a hash, plus the deposit. The price and the size travel encrypted. Keep the receipt the app saves on your device before the transaction is sent. Once the bid is opened, that receipt is how you check that what was revealed is what you sent.
+
+## One price for everyone
+
+After the close, every bid is opened. Tokens go to the highest bids until the supply runs out. The price of the last token sold is the **clearing price**. Every filled bid pays it. Nobody pays the higher number they bid.
+
+| Your bid | What you get |
+|---|---|
+| **Above** the clearing price | Filled in full. You pay the clearing price, and the unused deposit comes back. |
+| **Exactly** the clearing price | A share of whatever supply the higher bids left, pro rata. You may get only part of what you asked for. |
+| **Below** the clearing price | Nothing. The whole deposit comes back. |
+
+If demand never reaches the supply, the clearing price is the floor. Bids at or above the floor are filled in full, and the unsold tokens stay unsold.
+
+### A clearing, in numbers
+
+One million tokens on sale, floor at 1.00 USDG. Four bids:
+
+| Bidder | Tokens wanted | Max price | Deposit |
+|---|---|---|---|
+| Alice | 300,000 | 3.00 | 900,000 |
+| Bob | 500,000 | 2.00 | 1,000,000 |
+| Carol | 400,000 | 1.50 | 600,000 |
+| Dave | 600,000 | 1.00 | 600,000 |
+
+Walk down the prices. At 3.00, demand is 300,000. At 2.00 it is 800,000. At 1.50 it reaches 1,200,000, which covers the million on sale. **1.50 is the clearing price.** At that step, 200,000 tokens are left for 400,000 demanded, so Carol is filled halfway.
+
+| Bidder | Tokens | Pays | Refund |
+|---|---|---|---|
+| Alice | 300,000 | 450,000 | 450,000 |
+| Bob | 500,000 | 750,000 | 250,000 |
+| Carol | 200,000 | 300,000 | 300,000 |
+| Dave | 0 | 0 | 600,000 |
+
+Alice bid 3.00 and pays 1.50. Dave bid the floor and is out, because the supply was gone before his price. Drop Carol and Dave and demand is only 800,000: the clearing price falls to the floor, Alice and Bob are filled in full at 1.00, and 200,000 tokens are unsold.
+
+## After the price
+
+You claim your own refund. The button pays back the USDG you did not spend. A bid filled to the last cent has nothing to claim. A bid that won nothing claims the full deposit. If the sale is called off before it clears, nothing is sold and every deposit comes back the same way.
+
+OKA is not in the refund. The contract never held it. Filled bids receive their tokens by airdrop at launch, for the amount the clearing assigned them.
+
+You do not open your own bid. oka does, after bidding closes, because oka holds the key the bids were encrypted to. Other bidders cannot read your price or your size while the sale is open. oka can. A bid that is never opened is excluded from the price and refunded in full.
+
+<CardGroup cols={2}>
+  <Card title="Why OKA is paired to IOKA" icon="coins" href="/concepts/tokens">
+    The role OKA plays in the index fund, and why its liquidity is not a dollar pair.
+  </Card>
+  <Card title="What it costs to trade" icon="receipt" href="/reference/costs">
+    The lines on an ordinary trade. The auction is not one of them.
+  </Card>
+</CardGroup>

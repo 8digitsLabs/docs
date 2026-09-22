@@ -33,11 +33,11 @@ description: "The words oka uses, and what each one means precisely."
   </Accordion>
 
   <Accordion title="Perp">
-    A contract that tracks a reference price with no expiry date. You post margin, pick a side and a multiple, and your profit follows the reference. You own nothing: no wrapper, no issuer, no claim on anything. Long profits when the reference rises, short when it falls.
+    A contract that tracks a reference price with no expiry date, matched on Lighter. You post margin, pick a side and a multiple, and your profit follows the reference. You own nothing: no wrapper, no issuer, no claim on anything. Long profits when the reference rises, short when it falls.
   </Accordion>
 
   <Accordion title="Perps balance">
-    Stables credited to your perps account, usable as margin and for nothing else. A third balance beside your cash and your positions, and it genuinely sits elsewhere: cash is in your own execution wallet, this is on the venue that matches the orders. It cannot buy a stock, and moving between the two is a real transfer of a few minutes rather than a book entry. Split into collateral, which is all of it, and free margin, which is the part not backing a position and the only part that can leave.
+    Stables credited to your perps account on Lighter, usable as margin and for nothing else. A third balance beside your cash and your positions, and it genuinely sits elsewhere: cash is in your own execution wallet, this is on Lighter. It cannot buy a stock, and moving between the two is a real transfer of a few minutes rather than a book entry. Split into collateral, which is all of it, and free margin, which is the part not backing a position and the only part that can leave.
   </Accordion>
 
   <Accordion title="Margin">
@@ -86,6 +86,18 @@ description: "The words oka uses, and what each one means precisely."
 
   <Accordion title="Expert mode">
     You choose the issuer and the chain from a table of every listing and its all-in cost. The execution venue stays out of your hands in both modes.
+  </Accordion>
+
+  <Accordion title="OKA">
+    Plays a key role in the governance of the index fund. Its only pool is OKA / IOKA, so it is quoted against the index rather than against a stable. Minted once. Supply only falls.
+  </Accordion>
+
+  <Accordion title="IOKA">
+    The index: five tokenized stocks in a vault, issued as one token. It is the asset OKA's liquidity is paired to. One IOKA is a proportional claim on the vault. oka makes its market against USDG.
+  </Accordion>
+
+  <Accordion title="Clearing price">
+    The price of the last token sold in the sealed-bid auction. Every filled bid pays it, not the higher price that was bid. Bids above it are filled in full, bids exactly at it share what is left, bids below it are refunded.
   </Accordion>
 
   <Accordion title="Settlement token">

@@ -3,7 +3,7 @@ title: "Perps"
 description: "Leverage, shorts and a market that never closes, on a balance kept apart from your cash."
 ---
 
-Buying a wrapper gives you the stock's price and nothing else: no leverage, no way to profit from a fall, and nothing to trade while the exchange is shut. A perp is the other route. It is a separate product on a separate balance, and it works nothing like a fill.
+Buying a wrapper gives you the stock's price and nothing else: no leverage, no way to profit from a fall, and nothing to trade while the exchange is shut. A perp is the other route. Orders are matched on Lighter. It is a separate product on a separate balance, and it works nothing like a fill.
 
 <Note>
   Perps are for underlyings where leverage, a short, or round-the-clock access is the point. If none of those is what you want, buy the wrapper.
@@ -70,11 +70,11 @@ You have cash, you have positions in stocks, and you have this. Cash buys stocks
 
 It is not a design choice oka made for tidiness. The money genuinely lives somewhere else.
 
-Your cash sits in your own execution wallet, where you hold the keys and can export them. A perps balance sits on the venue that matches the orders, credited to an account anchored to your wallet address. Showing them as one number would tell you that a single figure is available for anything, when half of it is two transfers and a wait away from being usable.
+Your cash sits in your own execution wallet, where you hold the keys and can export them. A perps balance sits on Lighter, credited to an account anchored to your wallet address. Showing them as one number would tell you that a single figure is available for anything, when half of it is two transfers and a wait away from being usable.
 
 ### Moving money in
 
-Transferring from cash sends stables from your wallet to your own funding address, and the venue credits the account a few minutes later. The minimum is \$3.
+Transferring from cash sends stables from your wallet to your own funding address, and Lighter credits the account a few minutes later. The minimum is \$3.
 
 The first transfer is what creates the account. There is no sign-up step and nothing to approve: the money arriving is the registration.
 
@@ -94,7 +94,7 @@ Opening a position moves margin from free to committed. Closing it moves the mar
 
 A withdrawal is capped at free margin, never at collateral. Margin backing an open position cannot leave without moving that position's liquidation price closer, so oka will not let it. Close the position first, or withdraw less.
 
-Coming out is slower than going in, and it has more legs. It leaves the venue on the venue's own clock, arrives on Ethereum, and is then bridged home to Base as cash. oka presents it as one movement and handles the steps, but it is not instant and it is not a book entry.
+Coming out is slower than going in, and it has more legs. It leaves Lighter on Lighter's own clock, arrives on Ethereum, and is then bridged home to Base as cash. oka presents it as one movement and handles the steps, but it is not instant and it is not a book entry.
 
 <Warning>
   Plan the exit before you need it. Money in a perps balance is not money you can spend on a stock the same minute.

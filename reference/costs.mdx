@@ -29,16 +29,16 @@ A perp is priced differently, because what you pay is measured against the posit
 
 | | What it is | Who gets it |
 |---|---|---|
-| **Trading fee** | 0.10% of the position's size, on the way in and again on the way out | oka |
-| **Venue fee** | 0.005% of the position's size, each way | the venue that matches the order |
+| **Trading fee** | 0.04% of the position's size, maker and taker alike, on the way in and again on the way out | oka |
+| **Lighter fee** | 0.005% of the position's size, maker and taker, each way | Lighter |
 | **Funding** | exchanged every 8 hours between longs and shorts, either direction | the other side of the trade |
 | **Spread** | what the book gives you against its mid price | the market |
 
 <Warning>
-  The trading fee is a share of the **position**, not of your margin. At 20x, 0.10% of the position is 2% of the margin you posted, and 4% across a round trip. Leverage multiplies the fee exactly as it multiplies everything else.
+  The trading fee is a share of the **position**, not of your margin. Maker and taker pay the same 0.04%. At 20x, that is 0.8% of the margin you posted on the way in, and 1.6% across a round trip. Leverage multiplies the fee exactly as it multiplies everything else.
 </Warning>
 
-Opening a perps balance moves your account to the venue's paid tier, which is where the 0.005% comes from. The free tier charges nothing to trade but cannot carry oka's fee at all, so the two go together. You get lower latency and higher limits with it.
+Opening a perps balance moves your account onto Lighter's paid tier, which is where the 0.005% comes from. The free tier charges nothing to trade but cannot carry oka's fee at all, so the two go together. You get lower latency and higher limits with it.
 
 Liquidation is not a fee. Nothing is charged for it. It is the point at which your margin no longer covers the loss, and it costs you the margin itself.
 

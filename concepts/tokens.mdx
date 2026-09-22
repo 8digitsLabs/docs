@@ -1,56 +1,46 @@
 ---
 title: "OKA and IOKA"
-description: "An index fund held as one token, a governance token that steers it, and the two pools that connect them."
+description: "OKA has a key role in governing the index fund, and it is paired to that index. IOKA is the index, and it is what OKA's liquidity trades against."
 ---
 
-Two tokens with two jobs, and two pools that make them work together. Neither is a tokenized stock, and neither is something you need to understand to buy one.
+OKA plays a key role in the governance of the index fund. It is also a position quoted against that index rather than against a dollar.
+
+IOKA is the index itself: five tokenized stocks, held in one vault, issued as one token. It is there so OKA has a pair. The OKA pool is OKA / IOKA. There is no OKA / stable pool.
 
 <Note>
-  **Not live yet.** The contracts are written and tested against a fork of mainnet, but nothing runs in production, and the figures shown in the app are placeholders.
+  **Not live yet.** Nothing is minted or distributed, and the figures in the app are placeholders.
 </Note>
 
-## The two tokens
+## Why hold OKA
 
-### IOKA, the index fund
+**It has a key role in governing the index fund.** That is the fund behind IOKA.
 
-One token standing for a basket of five tokenized stocks held in a vault. One IOKA is a proportional claim on everything inside.
+**It moves with the stocks in the index.** OKA is priced in IOKA, not in dollars. When the five stocks in the index rise, the asset OKA is quoted against rises with them, and OKA moves with the basket instead of sitting flat against a stable.
 
-Buying that basket yourself means five trades, five spreads and five gas fees, then the same again every time the weights drift. IOKA is one trade and one position.
-
-Its value follows the basket, because there are only ever as many tokens as the vault has issued. That ratio of vault holdings to tokens in circulation is the **net asset value**, and everything below is measured against it.
-
-### OKA, the governance token
-
-OKA decides what IOKA holds: which five stocks, at which weights, and when the basket is rebalanced.
-
-Supply is fixed. Minted once at deployment, with no mint path afterwards. No inflation, no later issuance, nothing to dilute.
+**Its supply only falls.** OKA is minted once. Nothing can mint more. What is burned stays burned.
 
 ## The two pools
 
 ```mermaid
 flowchart LR
-  USDG[Stablecoin] <-->|"index market"| IOKA[IOKA]
-  IOKA <-->|"governance market"| OKA[OKA]
+  USDG[Stables] <-->|"index market"| IOKA[IOKA]
+  IOKA <-->|"OKA market"| OKA[OKA]
   VAULT[("Vault<br/>five tokenized stocks")] -.->|"backs"| IOKA
 ```
 
-Buying OKA with a stablecoin crosses both, left to right. The first hop is the market oka makes itself, and it pays the band's spread, which the fund keeps.
+Buying OKA with stables crosses both, left to right. The first hop is the market oka makes itself.
 
 ### IOKA / USDG, the index market
 
-Where the fund trades against a stablecoin. oka runs this pool itself, through a Uniswap v4 hook.
+Where the index trades against a stable. oka runs this pool. It quotes a band around the value of the basket, bidding below and offering above, and moves that band as the basket moves.
 
-The hook is the market maker. It places the fund's own liquidity in a band around a centre anchored to the net asset value, bidding below and offering above, and re-lays that band as the basket moves. Two behaviours follow.
+When one side of the band is bought out, the vault restocks it: buying the five stocks and minting IOKA against them, or selling them and burning IOKA. The inventory is the fund.
 
-**It refuses rather than misprice.** If the pool drifts too far from what the basket is actually worth, the hook stops trading.
+### OKA / IOKA, the OKA market
 
-**It rebuilds instead of running dry.** When one side of the band is bought out, the hook goes to the vault and restocks: buying the five underlying stocks and minting IOKA against them, or selling them and burning. Its inventory is the fund itself.
+Where OKA trades, priced in the index rather than in dollars. That is the pair. Liquidity stays in one pool instead of being split between a dollar market and an index market.
 
-### OKA / IOKA, the governance market
-
-Where OKA trades, priced in fund units rather than in dollars.
-
-OKA's claim is control over the fund, so it is quoted in shares of that fund rather than in dollars. That also keeps liquidity in one place instead of splitting it across two stablecoin pools.
+One IOKA is a share of the vault. There are only as many tokens as the vault has issued, and that ratio is the **net asset value**.
 
 ## How OKA is distributed
 
@@ -75,49 +65,60 @@ Four things count:
 - **People you refer.**
 - **Volume traded by the people you refer.**
 
-The last two stack with the 40% fee share, which is paid separately and in stablecoins.
+The last two stack with the 40% fee share, which is paid separately and in stables.
 
 ## Where the fees go
 
-Each pool charges about **2%** one way: the pool fee plus the band's half-spread where the band is the one quoting. The band earns more than that on top, because re-centring is itself a trade: as the basket moves, the hook arbitrages its own quote back to fair value and keeps the spread instead of handing it to outside arbitrageurs. That market-making profit is treated as revenue like the rest.
+Buying OKA with stables crosses both pools, so it pays into both. The two pools do not split the money the same way.
 
-Buying OKA with a stablecoin crosses both pools, so it pays into both.
+The protocol's own share is the **growth fund**. It is what finances growing oka.
 
-What happens next depends on which pool the money arrived in, because the two collect in different tokens and only one of them can retire OKA without buying it first.
+### The OKA pool
 
 ```mermaid
 flowchart LR
-  P1(["OKA / IOKA pool<br/>fee paid in OKA"]) -->|"half"| BURN1["burned"]
-  P1 -->|"half"| VAULT[("vault")]
-  P2(["IOKA / USDG pool<br/>fee and market making"]) -->|"half"| BUY["buys OKA back"]
-  P2 -->|"half"| VAULT
-  BUY --> BURN2["burned"]
-  VAULT -.->|"net asset value rises"| HOLD(["every IOKA holder"])
+  P1(["OKA / IOKA pool"]) -->|"50% in OKA"| BURN["burned"]
+  P1 -->|"50% in IOKA"| DIL["dilutes the index"]
 ```
 
-### The governance pool
+**Half is taken in OKA and burned.** That supply is gone. Nothing can mint it back.
 
-The OKA / IOKA pool charges its fee in whichever token is being sold, so a day of selling leaves it holding OKA it has already issued.
-
-**Half of it is burned.** No purchase is needed: the OKA is already there, and burning is the only way to retire it for good. Supply falls and never comes back, because nothing can mint OKA after deployment.
-
-**Half goes into the vault.** It is converted and added to the basket, so the vault holds more stock against the same number of IOKA. Every holder's claim grows without them buying anything.
+**Half is taken in IOKA and dilutes the index.** More IOKA stands against the same basket, so each IOKA is a smaller claim.
 
 ### The index pool
 
-The IOKA / USDG pool, the one the band quotes, collects in stablecoins and fund units rather than in OKA.
+This pool charges **2%**. Half of that fee is taken in IOKA, half in USDG. Each half is split again, into the growth fund and a buyback of OKA.
 
-**Half buys OKA on the governance market, and burns what it buys.** Retiring supply here takes two steps instead of one, and the purchase itself is a bid on the market it crosses.
+```mermaid
+flowchart TB
+  FEE(["IOKA / USDG pool<br/>2% fee"]) --> IOKA["50% in IOKA"]
+  FEE --> USDG["50% in USDG"]
+  IOKA -->|"0.5% of the trade"| GF1["growth fund"]
+  IOKA -->|"0.5% of the trade"| BB1["broken down, then buys OKA"]
+  USDG -->|"0.5% of the trade"| GF2["growth fund"]
+  USDG -->|"0.5% of the trade"| BB2["buys OKA"]
+```
 
-**Half goes into the vault**, exactly as above: more stock behind the same number of tokens, and a higher net asset value for everyone holding IOKA.
+| Slice of the 2% | Of the trade | Where it goes |
+|---|---|---|
+| Half of the IOKA | 0.5% | Growth fund |
+| Half of the IOKA | 0.5% | Broken down, then used to buy OKA |
+| Half of the USDG | 0.5% | Growth fund |
+| Half of the USDG | 0.5% | Buys OKA |
 
-Platform fees on ordinary stock trades are separate, and they are not part of this. They are described on the costs page.
+The IOKA headed for the buyback is broken down first, because a basket cannot buy OKA directly. The USDG can.
+
+### Market making
+
+On top of the 2%, the index pool earns another **2% to 5%** by quoting the market. All of it goes to the growth fund.
+
+Platform fees on ordinary stock trades are a different line. They are on the [costs](/reference/costs) page.
 
 <CardGroup cols={2}>
+  <Card title="The sealed-bid auction" icon="gavel" href="/concepts/auction">
+    How OKA is sold. Every filled bid pays the same price.
+  </Card>
   <Card title="What it costs to trade stocks" icon="receipt" href="/reference/costs">
     The lines on an ordinary trade, which are not these.
-  </Card>
-  <Card title="OKA and IOKA in the app" icon="arrow-up-right" href="https://app.oka.finance/tokens">
-    Net asset value, supply and the basket, live.
   </Card>
 </CardGroup>

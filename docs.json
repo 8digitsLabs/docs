@@ -36,7 +36,8 @@
           "concepts/routing",
           "concepts/perps",
           "concepts/wallets-and-keys",
-          "concepts/tokens"
+          "concepts/tokens",
+          "concepts/auction"
         ]
       },
       {
