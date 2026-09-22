@@ -3,71 +3,60 @@ title: "Sealed-bid auction"
 description: "How the OKA sale works. You name the most you will pay. Every filled bid pays the same price."
 ---
 
-OKA is sold in a sealed-bid auction, paid in USDG. You choose how much you want to spend and the most you will pay for one token. Other bidders cannot see either number. When bidding closes, the bids are opened together, and one price clears the whole sale.
+OKA is sold in a sealed bid, paid in USDG. You choose how much to spend and the most you will pay for one token. Nobody else sees those numbers.
 
-You never pay your own bid if the clearing price lands lower. You pay that price, and the rest of your deposit comes back.
+When bidding closes, the bids are opened together. One price clears the sale. You pay that price, not the higher number you bid. What you did not spend comes back. The tokens are airdropped at launch.
 
-<Note>
-  Filled bids are paid in tokens by airdrop at launch. Allocations are public, so anyone can check what each address is owed.
-</Note>
+## What you bid
 
-## Place a bid
+**How much you will spend.** That USDG is locked until the sale settles.
 
-Two numbers, in the order you actually decide them.
+**The most you will pay for one token.** The number of tokens follows from those two. Spend 1,000 at 2.00 and the bid is for 500 tokens.
 
-**How much you will spend.** That amount is the deposit. It is pulled in USDG and locked for the sale.
+The price has to sit between **0.10** and **100 USDG**, in steps of **0.10**. A price you type is snapped down to the nearest step.
 
-**The most you will pay for one token.** The number of tokens is the consequence of those two, not a third question. Spend 1,000 at a max price of 2.00 and the bid is for 500 tokens.
+One bid per address, and it cannot ask for more than **1% of the supply**. Until the close you can add USDG or raise the price. You cannot lower it, spend less, or cancel.
 
-A price has to sit between **0.10** and **100 USDG**, in steps of **0.10**. A price you type is snapped **down** to the nearest step, so the bid never costs more than the number you entered.
+## One price
 
-One bid per address, and that bid cannot ask for more than **1% of the supply**. A bid over the cap is refused. Until bidding closes you can put more USDG in, or raise the price. You cannot lower the price, spend less, or cancel. A higher price inside the same budget buys fewer tokens, and that is allowed: the money committed must not fall, the token count may.
-
-The form shows that range, the minimum deposit, and the 1% cap. Do not lock a deposit on a bid the sale will refuse.
-
-What goes on chain is a commitment, a hash, plus the deposit. The price and the size travel encrypted. Keep the receipt the app saves on your device before the transaction is sent. Once the bid is opened, that receipt is how you check that what was revealed is what you sent.
-
-## One price for everyone
-
-After the close, every bid is opened. Tokens go to the highest bids until the supply runs out. The price of the last token sold is the **clearing price**. Every filled bid pays it. Nobody pays the higher number they bid.
+Tokens go to the highest bids until the supply runs out. The price of the last token sold is the **clearing price**. Every filled bid pays it.
 
 | Your bid | What you get |
 |---|---|
-| **Above** the clearing price | Filled in full. You pay the clearing price, and the unused deposit comes back. |
-| **Exactly** the clearing price | A share of whatever supply the higher bids left, pro rata. You may get only part of what you asked for. |
+| **Above** the clearing price | Filled in full. You pay the clearing price. The rest of the deposit comes back. |
+| **Exactly** the clearing price | A share of what is left. You may get only part of what you asked for. |
 | **Below** the clearing price | Nothing. The whole deposit comes back. |
 
-If demand never reaches the supply, the clearing price is the minimum, 0.10 USDG. Bids at or above it are filled in full, and the unsold tokens stay unsold.
+If demand falls short of the supply, the clearing price is **0.10 USDG**. Bids at or above it are filled in full, and the unsold tokens stay unsold.
 
-### A clearing, in numbers
+<AccordionGroup>
+  <Accordion title="A clearing, in numbers">
+    One million tokens on sale. Four bids:
 
-One million tokens on sale, floor at 1.00 USDG. Four bids:
+    | Bidder | Tokens wanted | Max price | Deposit |
+    |---|---|---|---|
+    | Alice | 300,000 | 3.00 | 900,000 |
+    | Bob | 500,000 | 2.00 | 1,000,000 |
+    | Carol | 400,000 | 1.50 | 600,000 |
+    | Dave | 600,000 | 1.00 | 600,000 |
 
-| Bidder | Tokens wanted | Max price | Deposit |
-|---|---|---|---|
-| Alice | 300,000 | 3.00 | 900,000 |
-| Bob | 500,000 | 2.00 | 1,000,000 |
-| Carol | 400,000 | 1.50 | 600,000 |
-| Dave | 600,000 | 1.00 | 600,000 |
+    At 3.00, demand is 300,000. At 2.00 it is 800,000. At 1.50 it reaches 1,200,000, which covers the million on sale. **1.50 is the clearing price.** At that step, 200,000 tokens are left for 400,000 demanded, so Carol is filled halfway.
 
-Walk down the prices. At 3.00, demand is 300,000. At 2.00 it is 800,000. At 1.50 it reaches 1,200,000, which covers the million on sale. **1.50 is the clearing price.** At that step, 200,000 tokens are left for 400,000 demanded, so Carol is filled halfway.
+    | Bidder | Tokens | Pays | Refund |
+    |---|---|---|---|
+    | Alice | 300,000 | 450,000 | 450,000 |
+    | Bob | 500,000 | 750,000 | 250,000 |
+    | Carol | 200,000 | 300,000 | 300,000 |
+    | Dave | 0 | 0 | 600,000 |
 
-| Bidder | Tokens | Pays | Refund |
-|---|---|---|---|
-| Alice | 300,000 | 450,000 | 450,000 |
-| Bob | 500,000 | 750,000 | 250,000 |
-| Carol | 200,000 | 300,000 | 300,000 |
-| Dave | 0 | 0 | 600,000 |
+    Alice bid 3.00 and pays 1.50. Dave is out, because the supply was gone before his price. Drop Carol and Dave and demand is only 800,000: the clearing price falls to the minimum, Alice and Bob are filled in full, and 200,000 tokens are unsold.
+  </Accordion>
+  <Accordion title="What stays hidden">
+    What goes on chain is a commitment, a hash, plus the deposit. The price and the size travel encrypted. Keep the receipt the app saves on your device before the transaction is sent. Once the bid is opened, that receipt is how you check that what was revealed is what you sent.
 
-Alice bid 3.00 and pays 1.50. Dave bid the floor and is out, because the supply was gone before his price. Drop Carol and Dave and demand is only 800,000: the clearing price falls to the floor, Alice and Bob are filled in full at 1.00, and 200,000 tokens are unsold.
-
-## After the price
-
-You claim your own refund. The button pays back the USDG you did not spend. A bid filled to the last cent has nothing to claim. A bid that won nothing claims the full deposit. If the sale is called off before it clears, nothing is sold and every deposit comes back the same way.
-
-Filled bids receive their tokens by airdrop at launch, for the amount the clearing assigned them.
-
-You do not open your own bid. oka does, after bidding closes, because oka holds the key the bids were encrypted to. Other bidders cannot read your price or your size while the sale is open. oka can. A bid that is never opened is excluded from the price and refunded in full.
+    You do not open your own bid. oka does, after bidding closes. Other bidders cannot read your price or your size while the sale is open. oka can. A bid that is never opened is left out of the price, and the deposit comes back in full.
+  </Accordion>
+</AccordionGroup>
 
 ## Contract
 
@@ -77,11 +66,6 @@ On Robinhood Chain. This address is a placeholder.
 |---|---|
 | **Sealed-bid auction** | `0x00000` |
 
-<CardGroup cols={2}>
-  <Card title="OKA and IOKA" icon="coins" href="/concepts/tokens">
-    What the two tokens are, and why OKA is priced in the index.
-  </Card>
-  <Card title="What it costs to trade" icon="receipt" href="/reference/costs">
-    The lines on an ordinary trade. The auction is not one of them.
-  </Card>
-</CardGroup>
+<Card title="OKA and IOKA" icon="coins" href="/concepts/tokens">
+  What the two tokens are, and why OKA is priced in the index.
+</Card>
