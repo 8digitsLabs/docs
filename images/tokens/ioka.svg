@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="IOKA">
+  <defs>
+    <linearGradient id="ioka" x1="8" y1="4" x2="58" y2="60">
+      <stop offset="0%" stop-color="#FFC672"/>
+      <stop offset="38%" stop-color="#F98274"/>
+      <stop offset="62%" stop-color="#E8564F"/>
+      <stop offset="100%" stop-color="#F46E68"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="22" fill="none" stroke="url(#ioka)" stroke-width="14"/>
+</svg>
