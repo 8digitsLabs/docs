@@ -39,7 +39,7 @@ page unreadable:
 - **Perps balance** — the stables backing perps. A third balance beside cash and positions, never called "cash".
 - **Margin** / **Leverage** / **Liquidation price** / **Funding** — the four words a perp needs. Keep margin and perps balance apart: margin is what one position uses.
 
-Never name the venue that matches a perp order. It is "the venue", and which one it is is not part of the product.
+The perp venue is Lighter. Name it. Stock-listing venues stay unnamed: which pool filled a stock order is routing, not a choice the ticket offers.
 
 Say "stables", not "stablecoins", in body copy. Say "chain", not "network".
 

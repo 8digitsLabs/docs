@@ -25,7 +25,8 @@
           "guides/buy",
           "guides/sell",
           "guides/withdraw",
-          "guides/referrals"
+          "guides/referrals",
+          "concepts/points"
         ]
       },
       {
@@ -33,10 +34,11 @@
         "pages": [
           "concepts/what-you-own",
           "concepts/settlement",
+          "concepts/wallets-and-keys",
           "concepts/routing",
           "concepts/perps",
-          "concepts/wallets-and-keys",
-          "concepts/tokens"
+          "concepts/tokens",
+          "concepts/auction"
         ]
       },
       {

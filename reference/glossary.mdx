@@ -33,11 +33,11 @@ description: "The words oka uses, and what each one means precisely."
   </Accordion>
 
   <Accordion title="Perp">
-    A contract that tracks a reference price with no expiry date. You post margin, pick a side and a multiple, and your profit follows the reference. You own nothing: no wrapper, no issuer, no claim on anything. Long profits when the reference rises, short when it falls.
+    A contract that tracks a reference price with no expiry date, matched on Lighter. You post margin, pick a side and a multiple, and your profit follows the reference. You own nothing: no wrapper, no issuer, no claim on anything. Long profits when the reference rises, short when it falls.
   </Accordion>
 
   <Accordion title="Perps balance">
-    Stables credited to your perps account, usable as margin and for nothing else. A third balance beside your cash and your positions, and it genuinely sits elsewhere: cash is in your own execution wallet, this is on the venue that matches the orders. It cannot buy a stock, and moving between the two is a real transfer of a few minutes rather than a book entry. Split into collateral, which is all of it, and free margin, which is the part not backing a position and the only part that can leave.
+    Stables credited to your perps account on Lighter, usable as margin and for nothing else. A third balance beside your cash and your positions, and it genuinely sits elsewhere: cash is in your own execution wallet, this is on Lighter. It cannot buy a stock, and moving between the two is a real transfer of a few minutes rather than a book entry. Split into collateral, which is all of it, and free margin, which is the part not backing a position and the only part that can leave.
   </Accordion>
 
   <Accordion title="Margin">
@@ -73,7 +73,7 @@ description: "The words oka uses, and what each one means precisely."
   </Accordion>
 
   <Accordion title="Platform fee">
-    0.25% on a trade, of which 40% goes to whoever referred you. The only line oka keeps.
+    0.25% on a trade. A referred account pays 10% less. 40% of the fee goes to whoever referred them. The only line oka keeps.
   </Accordion>
 
   <Accordion title="Gas take">
@@ -88,7 +88,19 @@ description: "The words oka uses, and what each one means precisely."
     You choose the issuer and the chain from a table of every listing and its all-in cost. The execution venue stays out of your hands in both modes.
   </Accordion>
 
+  <Accordion title="OKA">
+    The official platform token. Has a key role in the governance of the index fund. You buy and sell it for IOKA, so its price follows the five stocks in the fund. Minted once. Supply only falls.
+  </Accordion>
+
+  <Accordion title="IOKA">
+    The index fund: five tokenized stocks in one token, paired with USDG. OKA is bought and sold for IOKA.
+  </Accordion>
+
+  <Accordion title="Clearing price">
+    The price of the last token sold in the sealed-bid auction. Every filled bid pays it, not the higher price that was bid. Bids above it are filled in full, bids exactly at it share what is left, bids below it are refunded.
+  </Accordion>
+
   <Accordion title="Settlement token">
-    The stablecoin a chain settles in. USDC everywhere, except Robinhood Chain, which uses USDG: the Global Dollar.
+    The stablecoin a chain settles in. USDC everywhere, except Robinhood Chain, which uses <img src="/images/tokens/usdg.avif" alt="" style={{ width: 16, height: 16, margin: "0 4px 0 0", display: "inline-block", verticalAlign: "text-bottom" }} /> USDG: the Global Dollar.
   </Accordion>
 </AccordionGroup>

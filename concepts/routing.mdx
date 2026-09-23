@@ -25,13 +25,9 @@ The first two are inside what each listing returns, so the ranking compares them
 
 Add them up and you get the all-in figure the ticket shows. A cent of spread advantage does not survive a three-dollar bridge.
 
-## Where the prices come from
-
-oka does not run its own pools for tokenized stocks. It asks the venues that do, several of them per chain, and takes the best answer each listing produces.
-
-Which venue filled your order is not a choice the ticket offers. It is a routing problem solved against live liquidity, and turning it into a question would be asking you something with no good answer.
-
 ## What drops out
+
+Before that ranking, some listings never enter it.
 
 **Quotes that are too good.** A quote implausibly better than the market is a bug, so it is dropped.
 
@@ -42,6 +38,8 @@ Which venue filled your order is not a choice the ticket offers. It is a routing
 **Routes that keep failing.** A venue that cannot deliver drops out for a while. A listing can therefore disappear for reasons unrelated to hours or liquidity.
 
 ## Auto and Expert
+
+What remains is a ranking. Two ways to use it.
 
 **Auto** picks the cheapest and does not present the alternatives it rejected.
 
@@ -55,9 +53,17 @@ Which venue filled your order is not a choice the ticket offers. It is a routing
   />
 </Frame>
 
-An Expert pick is honoured only if it can execute. On a sell that needs several listings, the picker is hidden.
+## Where the prices come from
+
+Expert lets you choose the issuer and the chain. Neither mode lets you choose the venue.
+
+oka does not run its own pools for tokenized stocks. It asks the venues that do, several of them per chain, and takes the best answer each listing produces.
+
+Which venue filled your order is not a choice the ticket offers. It is a routing problem solved against live liquidity, and turning it into a question would be asking you something with no good answer.
 
 ## When an order fails
+
+An Expert pick is honoured only if it can execute.
 
 A buy fills or it does not happen. There is no partial fill.
 
@@ -69,6 +75,6 @@ When it fails, the money stops as cash on Base. If the stables had already bridg
 
 ## Splitting a sale
 
-Buys take one listing. Large sells sometimes cannot, so oka splits the exit across several: the fewest legs that cover the amount, emptying your smallest lots first.
+Buys take one listing. Large sells sometimes cannot, so oka splits the exit across several: the fewest legs that cover the amount, emptying your smallest lots first. On a sell that needs several listings, the Expert picker is hidden.
 
 Those legs execute independently, which is the one case where a result lands in between. The activity screen names which of them settled.

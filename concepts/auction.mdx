@@ -1,0 +1,99 @@
+---
+title: "Sealed-bid auction"
+description: "How the OKA sale runs, step by step. You name the most you will pay. Every filled bid pays the same price."
+---
+
+<div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+  <p style={{ margin: 0, flex: "1 1 auto" }}>
+    OKA is sold in a sealed bid, paid in <img src="/images/tokens/usdg.avif" alt="" style={{ width: 16, height: 16, margin: "0 4px 0 0", display: "inline-block", verticalAlign: "text-bottom" }} /> USDG. You name what you will spend and the most you will pay. Nobody else sees those numbers. The sale then follows one order.
+  </p>
+  <span
+    role="img"
+    aria-label="OKA mascot"
+    style={{
+      width: 96,
+      height: 112,
+      flexShrink: 0,
+      backgroundImage: "url(/images/mascot-auction.webp)",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      backgroundSize: "contain",
+    }}
+  />
+</div>
+
+<Steps>
+  <Step title="Place a bid">
+    You enter two numbers.
+
+    **How much you will spend.** That USDG is locked until the sale settles.
+
+    **The most you will pay for one token.** The number of tokens follows from those two. Spend 1,000 at 2.00 and the bid is for 500 tokens.
+
+    The price starts at **0.10 USDG** and moves in steps of **0.10**. At 0.10, OKA is valued at a **100,000** market cap. A price you type is snapped down to the nearest step.
+
+    One bid per address, and it cannot ask for more than **1% of the supply**.
+
+    The bid is sealed. Other bidders cannot read your price or your size while the sale is open. What goes on chain is a hash and the deposit. The price and the size travel encrypted.
+  </Step>
+  <Step title="Change it before the close">
+    Until the close, you can raise the price and the amount of USDG you bid.
+  </Step>
+  <Step title="The bids are opened">
+    When bidding closes, oka opens every bid at once. You do not open your own. Other bidders could not read your bid while the sale was open. oka can.
+
+    A bid that is never opened is left out of the price, and the deposit comes back in full.
+  </Step>
+  <Step title="One price clears the sale">
+    Tokens go to the highest bids until the supply runs out. The price of the last token sold is the **clearing price**. Every filled bid pays that price, not the higher number that was bid.
+
+    | Your bid | What you get |
+    |---|---|
+    | **Above** the clearing price | Filled in full. You pay the clearing price. The rest of the deposit comes back. |
+    | **Exactly** the clearing price | A share of what is left. You may get only part of what you asked for. |
+    | **Below** the clearing price | Nothing. The whole deposit comes back. |
+
+    If demand falls short of the supply, the clearing price is **0.10 USDG**. Bids at or above it are filled in full, and the unsold tokens stay unsold.
+  </Step>
+  <Step title="You settle">
+    A filled bid pays the clearing price. The USDG you did not spend comes back. The tokens are airdropped at launch.
+
+    A bid below the clearing price gets nothing, and the whole deposit comes back.
+  </Step>
+</Steps>
+
+<AccordionGroup>
+  <Accordion title="A clearing, in numbers">
+    One million tokens on sale. Four bids:
+
+    | Bidder | Tokens wanted | Max price | Deposit |
+    |---|---|---|---|
+    | Alice | 300,000 | 3.00 | 900,000 |
+    | Bob | 500,000 | 2.00 | 1,000,000 |
+    | Carol | 400,000 | 1.50 | 600,000 |
+    | Dave | 600,000 | 1.00 | 600,000 |
+
+    At 3.00, demand is 300,000. At 2.00 it is 800,000. At 1.50 it reaches 1,200,000, which covers the million on sale. **1.50 is the clearing price.** At that step, 200,000 tokens are left for 400,000 demanded, so Carol is filled halfway.
+
+    | Bidder | Tokens | Pays | Refund |
+    |---|---|---|---|
+    | Alice | 300,000 | 450,000 | 450,000 |
+    | Bob | 500,000 | 750,000 | 250,000 |
+    | Carol | 200,000 | 300,000 | 300,000 |
+    | Dave | 0 | 0 | 600,000 |
+
+    Alice bid 3.00 and pays 1.50. Dave is out, because the supply was gone before his price. Drop Carol and Dave and demand is only 800,000: the clearing price falls to the minimum, Alice and Bob are filled in full, and 200,000 tokens are unsold.
+  </Accordion>
+</AccordionGroup>
+
+## Contract
+
+On Robinhood Chain. This address is a placeholder.
+
+| Contract | Address |
+|---|---|
+| **Sealed-bid auction** | `0x00000` |
+
+<Card title="OKA and IOKA" icon="coins" href="/concepts/tokens">
+  What the two tokens are, and why OKA is priced in the index.
+</Card>
