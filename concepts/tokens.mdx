@@ -54,7 +54,6 @@ The five stocks sit in a vault. That contract is the fund. It holds the stocks a
 ## The two pools
 
 ```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e8564f','primaryTextColor':'#ffffff','primaryBorderColor':'#e8564f','lineColor':'#e8564f','fontFamily':'inherit'}}}%%
 flowchart LR
   USDG[Stables] <-->|"$IOKA / USDG"| IOKA["$IOKA"]
   IOKA <-->|"$OKA / $IOKA"| OKA["$OKA"]
@@ -78,7 +77,6 @@ The protocol's own share is the **growth fund**. It finances growing oka.
 **The \$OKA pool**
 
 ```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e8564f','primaryTextColor':'#ffffff','primaryBorderColor':'#e8564f','lineColor':'#e8564f','fontFamily':'inherit'}}}%%
 flowchart LR
   P1(["$OKA / $IOKA pool"]) -->|"50% in $OKA"| BURN["burned"]
   P1 -->|"50% in $IOKA"| DIL["dilutes the index"]
@@ -91,7 +89,6 @@ Half is taken in \$IOKA and dilutes the index. More \$IOKA stands against the sa
 **The index pool** charges **2%**. Half of that fee is taken in \$IOKA, half in USDG. Each half splits again: one part to the growth fund, one part to buy \$OKA.
 
 ```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e8564f','primaryTextColor':'#ffffff','primaryBorderColor':'#e8564f','lineColor':'#e8564f','fontFamily':'inherit'}}}%%
 flowchart TB
   FEE(["$IOKA / USDG pool<br/>2% fee"]) --> IOKA["50% in $IOKA"]
   FEE --> USDG["50% in USDG"]
